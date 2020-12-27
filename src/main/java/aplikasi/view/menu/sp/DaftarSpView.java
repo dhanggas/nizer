@@ -3,15 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package aplikasi.view.menu.ktp;
+package aplikasi.view.menu.sp;
 
 import aplikasi.config.KoneksiDB;
-import aplikasi.config.ValueFormatter;
 import aplikasi.controller.TableViewController;
-import aplikasi.entity.Ktp;
+import aplikasi.entity.SuratPengantar;
 import aplikasi.entity.Penduduk;
 import aplikasi.entity.Users;
-import aplikasi.repository.RepoKtp;
 import aplikasi.view.MainMenuView;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
@@ -23,9 +21,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import aplikasi.service.ServiceKtp;
-import aplikasi.view.menu.laporan.LaporanSirkulasiAsetView;
-import java.sql.Date;
+import aplikasi.service.ServiceSp;
 import java.util.HashMap;
 import java.util.Map;
 import net.sf.jasperreports.engine.JRException;
@@ -33,42 +29,43 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.view.JasperViewer;
+import aplikasi.repository.RepoSp;
 
 /**
  *
  * @author dhiskar
  */
-public class DaftarKtpView extends javax.swing.JInternalFrame {
+public class DaftarSpView extends javax.swing.JInternalFrame {
 
-//    private final RepoKtp repoKtp = new ServiceKtp(KoneksiDB.getDataSource());
+//    private final RepoSp repoKtp = new ServiceSp(KoneksiDB.getDataSource());
     private final MainMenuView menuController;
     private final TableViewController tableController;
-    private final RepoKtp repoKtp;
-    private List<Ktp> daftarKtp;
-    private List<Ktp> daftarKtp2;
+    private final RepoSp repoKtp;
+    private List<SuratPengantar> daftarKtp;
+    private List<SuratPengantar> daftarKtp2;
     private Users p = null;
-    private Ktp ktp = null;
+    private SuratPengantar ktp = null;
 
     /**
      * Creates new form DaftarAsetView
      *
      * @param menuController
      */
-    public DaftarKtpView(MainMenuView menuController) {
+    public DaftarSpView(MainMenuView menuController) {
         initComponents();
         this.menuController = menuController;
         this.tableController = new TableViewController(tableView);
-        this.repoKtp = new ServiceKtp(KoneksiDB.getDataSource());
+        this.repoKtp = new ServiceSp(KoneksiDB.getDataSource());
         this.daftarKtp = new ArrayList<>();
         this.daftarKtp2 = new ArrayList<>();
         refreshDataTablesByName();
     }
 
-    public DaftarKtpView(MainMenuView menuController, Users p) {
+    public DaftarSpView(MainMenuView menuController, Users p) {
         initComponents();
         this.menuController = menuController;
         this.tableController = new TableViewController(tableView);
-        this.repoKtp = new ServiceKtp(KoneksiDB.getDataSource());
+        this.repoKtp = new ServiceSp(KoneksiDB.getDataSource());
         this.daftarKtp = new ArrayList<>();
         this.daftarKtp2 = new ArrayList<>();
         refreshDataTablesByName();
@@ -85,15 +82,15 @@ public class DaftarKtpView extends javax.swing.JInternalFrame {
         try {
             tableController.clearData();
             this.daftarKtp = repoKtp.findAll();
-            for (Ktp k : daftarKtp) {
-                Object[] row = {k.getNo_sp(), k.getTgl(), k.getPenduduk().getNik(), k.getPenduduk().getNama(), k.getPenduduk().getNama_ibu(), k.getPenduduk().getNama_ayah(), k.getPenduduk().getTmp_lahir(), k.getPenduduk().getTgl_lahir(),
+            for (SuratPengantar k : daftarKtp) {
+                Object[] row = {k.getNo_sp(), k.getTgl(), k.getPenduduk().getNik(), k.getPenduduk().getNama(), k.getKeperluan(), k.getPenduduk().getNama_ibu(), k.getPenduduk().getNama_ayah(), k.getPenduduk().getTmp_lahir(), k.getPenduduk().getTgl_lahir(),
                     k.getPenduduk().getKelamin(), k.getPenduduk().getGol_darah(), k.getPenduduk().getAlamat(), k.getPenduduk().getRt(), k.getPenduduk().getRw(), k.getPenduduk().getKelurahan(),
-                    k.getPenduduk().getKecamatan(), k.getPenduduk().getAgama(), k.getPenduduk().getPendidikan(), k.getPenduduk().getSts_kawin(), k.getPenduduk().getPekerjaan(), k.getPenduduk().getKewarganegaraan(),k.isVerifikasi()};
+                    k.getPenduduk().getKecamatan(), k.getPenduduk().getAgama(), k.getPenduduk().getPendidikan(), k.getPenduduk().getSts_kawin(), k.getPenduduk().getPekerjaan(), k.getPenduduk().getKewarganegaraan(), k.isVerifikasi()};
                 tableController.getModel().addRow(row);
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "Tidak dapat mendapatkan data penduduk", getTitle(), JOptionPane.ERROR_MESSAGE);
-            Logger.getLogger(DaftarKtpView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DaftarSpView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -106,14 +103,14 @@ public class DaftarKtpView extends javax.swing.JInternalFrame {
         try {
             tableController.clearData();
             this.daftarKtp = repoKtp.findByNama(txtCari.getText());
-            for (Ktp k : daftarKtp) {
-                Object[] row = {k.getNo_sp(), k.getTgl(), k.getPenduduk().getNik(), k.getPenduduk().getNama(), k.getPenduduk().getNama_ibu(), k.getPenduduk().getNama_ayah(), k.getPenduduk().getTmp_lahir(), k.getPenduduk().getTgl_lahir(),
+            for (SuratPengantar k : daftarKtp) {
+                Object[] row = {k.getNo_sp(), k.getTgl(), k.getPenduduk().getNik(), k.getPenduduk().getNama(), k.getKeperluan(), k.getPenduduk().getNama_ibu(), k.getPenduduk().getNama_ayah(), k.getPenduduk().getTmp_lahir(), k.getPenduduk().getTgl_lahir(),
                     k.getPenduduk().getKelamin(), k.getPenduduk().getGol_darah(), k.getPenduduk().getAlamat(), k.getPenduduk().getRt(), k.getPenduduk().getRw(), k.getPenduduk().getKelurahan(),
-                    k.getPenduduk().getKecamatan(), k.getPenduduk().getAgama(), k.getPenduduk().getPendidikan(), k.getPenduduk().getSts_kawin(), k.getPenduduk().getPekerjaan(), k.getPenduduk().getKewarganegaraan(),k.isVerifikasi()};
+                    k.getPenduduk().getKecamatan(), k.getPenduduk().getAgama(), k.getPenduduk().getPendidikan(), k.getPenduduk().getSts_kawin(), k.getPenduduk().getPekerjaan(), k.getPenduduk().getKewarganegaraan(), k.isVerifikasi()};
                 tableController.getModel().addRow(row);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DaftarKtpView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DaftarSpView.class.getName()).log(Level.SEVERE, null, ex);
         }
         tableController.setContentTableAlignment(Arrays.asList(0, 1, 3));
     }
@@ -161,6 +158,9 @@ public class DaftarKtpView extends javax.swing.JInternalFrame {
         txtNoSp = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         btnVerifikasi = new javax.swing.JButton();
+        jLabel21 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtKeperluan = new javax.swing.JTextArea();
 
         pmnuUbah.setText("Ubah");
         pmnuUbah.addActionListener(new java.awt.event.ActionListener() {
@@ -188,7 +188,7 @@ public class DaftarKtpView extends javax.swing.JInternalFrame {
         });
         jPopupMenu1.add(pmnuLihatTransaksi);
 
-        setTitle("Pengantar KTP");
+        setTitle("Surat Pengantar");
         setMinimumSize(new java.awt.Dimension(53, 22));
         setPreferredSize(new java.awt.Dimension(710, 490));
 
@@ -420,6 +420,14 @@ public class DaftarKtpView extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel21.setText("Keperluan");
+
+        txtKeperluan.setEditable(false);
+        txtKeperluan.setColumns(20);
+        txtKeperluan.setLineWrap(true);
+        txtKeperluan.setRows(5);
+        jScrollPane2.setViewportView(txtKeperluan);
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -427,6 +435,7 @@ public class DaftarKtpView extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -450,8 +459,9 @@ public class DaftarKtpView extends javax.swing.JInternalFrame {
                                 .addComponent(txt_tgl_lahir, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txt_tmp_lahir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE))
                             .addComponent(txtNik, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTglPengajuan, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(txtTglPengajuan, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))
+                        .addGap(23, 23, 23)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -491,7 +501,11 @@ public class DaftarKtpView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_kelamin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel4, java.awt.BorderLayout.LINE_END);
@@ -502,22 +516,22 @@ public class DaftarKtpView extends javax.swing.JInternalFrame {
     private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
         if (btnVerifikasi.getText().equals("Unverifikasi")) {
             JOptionPane.showMessageDialog(this, "Data sudah di Verifikasi!", getTitle(), JOptionPane.WARNING_MESSAGE);
-            
+
         } else {
-        if (tableController.isSelected()) {
-            Ktp ktp = daftarKtp.get(tableController.getRowSelected());
-            DataKtpView view = new DataKtpView(menuController, this, ktp, true, p);
-            view.setLocationRelativeTo(null);
-            view.setResizable(false);
-            view.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(this, "Data belum dipilih!", getTitle(), JOptionPane.WARNING_MESSAGE);
-        }
+            if (tableController.isSelected()) {
+                SuratPengantar ktp = daftarKtp.get(tableController.getRowSelected());
+                DataSpView view = new DataSpView(menuController, this, ktp, true, p);
+                view.setLocationRelativeTo(null);
+                view.setResizable(false);
+                view.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Data belum dipilih!", getTitle(), JOptionPane.WARNING_MESSAGE);
+            }
         }
     }//GEN-LAST:event_btnUbahActionPerformed
 
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
-        DataKtpView view = new DataKtpView(menuController, this, true, p);
+        DataSpView view = new DataSpView(menuController, this, true, p);
         view.setResizable(false);
         view.setLocationRelativeTo(null);
         view.setVisible(true);
@@ -530,10 +544,10 @@ public class DaftarKtpView extends javax.swing.JInternalFrame {
 
     private void tableViewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableViewMouseClicked
         clearFields();
-        txtCari.setText("");
+//        txtCari.setText("");
         tableView.changeSelection(tableController.getRowSelected(), 1, false, false);
         if (tableController.isSelected()) {
-            Ktp ktp = daftarKtp.get(tableController.getRowSelected());
+            SuratPengantar ktp = daftarKtp.get(tableController.getRowSelected());
             setFields(ktp);
         } else {
         }
@@ -556,7 +570,7 @@ public class DaftarKtpView extends javax.swing.JInternalFrame {
 
     private void pmnuLihatTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pmnuLihatTransaksiActionPerformed
 //        if (tableController.isSelected()) {
-//            Ktp penduduk = daftarAset.get(tableController.getRowSelected());
+//            SuratPengantar penduduk = daftarAset.get(tableController.getRowSelected());
 //            LaporanLihatTransaksi view = new LaporanLihatTransaksi(menuController, penduduk, true);
 //            view.setLocationRelativeTo(null);
 //            view.setTitle("Histori Transaksi");
@@ -589,18 +603,24 @@ public class DaftarKtpView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnTambahKeyPressed
 
     private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
-        if (tableController.isSelected()) {
-            try {
-                Ktp ktp = daftarKtp.get(tableController.getRowSelected());
-                int j = JOptionPane.showConfirmDialog(this, "Hapus data ?", this.getTitle(), JOptionPane.YES_NO_OPTION);
-                if (j == JOptionPane.YES_OPTION) {
-                    repoKtp.delete(ktp.getNo_sp());
-                    refreshDataTables();
-                }
-            } catch (Exception e) {
-            }
+        if (btnVerifikasi.getText().equals("Unverifikasi")) {
+            JOptionPane.showMessageDialog(this, "Data sudah di Verifikasi!", getTitle(), JOptionPane.WARNING_MESSAGE);
+
         } else {
-            JOptionPane.showMessageDialog(this, "Data Aset belum dipilih!", getTitle(), JOptionPane.WARNING_MESSAGE);
+
+            if (tableController.isSelected()) {
+                try {
+                    SuratPengantar ktp = daftarKtp.get(tableController.getRowSelected());
+                    int j = JOptionPane.showConfirmDialog(this, "Hapus data ?", this.getTitle(), JOptionPane.YES_NO_OPTION);
+                    if (j == JOptionPane.YES_OPTION) {
+                        repoKtp.delete(ktp.getNo_sp());
+                        refreshDataTables();
+                    }
+                } catch (Exception e) {
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Data Aset belum dipilih!", getTitle(), JOptionPane.WARNING_MESSAGE);
+            }
         }
     }//GEN-LAST:event_btnHapusActionPerformed
 
@@ -614,35 +634,27 @@ public class DaftarKtpView extends javax.swing.JInternalFrame {
 
     private void btnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakActionPerformed
         if (tableController.isSelected()) {
-            if (daftarKtp2.size() > 0) {
-                try {
-                    String url = "/laporan/SpKtp.jasper";
-                    Map<String, Object> map = new HashMap<>();
+            try {
+                this.daftarKtp2 = repoKtp.findByNama(txtNoSp.getText());
+                String url = "/laporan/SpKtp.jasper";
+                Map<String, Object> map = new HashMap<>();
 //                map.put("nama", ktp.getPenduduk().getNama());
-                    JasperPrint print = JasperFillManager.fillReport(
-                            getClass().getResourceAsStream(url),
-                            map,
-                            new JRBeanCollectionDataSource(daftarKtp2));
-                    JasperViewer view = new JasperViewer(print, false);
-                    view.setLocationRelativeTo(null);
-                    view.setExtendedState(JasperViewer.MAXIMIZED_BOTH);
-                    view.setVisible(true);
-                } catch (JRException ex) {
-                    Logger.getLogger(LaporanSirkulasiAsetView.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "Data belum diproses", getTitle(), JOptionPane.INFORMATION_MESSAGE);
+                JasperPrint print = JasperFillManager.fillReport(
+                        getClass().getResourceAsStream(url),
+                        map,
+                        new JRBeanCollectionDataSource(daftarKtp2));
+                JasperViewer view = new JasperViewer(print, false);
+                view.setLocationRelativeTo(null);
+                view.setExtendedState(JasperViewer.MAXIMIZED_BOTH);
+                view.setVisible(true);
+            } catch (JRException ex) {
+                Logger.getLogger(DaftarSpView.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(DaftarSpView.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             JOptionPane.showMessageDialog(this, "Data belum dipilih!", getTitle(), JOptionPane.WARNING_MESSAGE);
         }
-
-        try {
-            this.daftarKtp2 = repoKtp.findByNama(txtNoSp.getText());
-        } catch (SQLException ex) {
-            Logger.getLogger(DaftarKtpView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
     }//GEN-LAST:event_btnCetakActionPerformed
 
     private void btnCetakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnCetakKeyPressed
@@ -653,25 +665,25 @@ public class DaftarKtpView extends javax.swing.JInternalFrame {
 
         if (tableController.isSelected()) {
             try {
-            Ktp k = new Ktp();
-            k.setNo_sp(txtNoSp.getText());
-            Penduduk penduduk = new Penduduk();
-            penduduk.setNik(txtNik.getText());
-            k.setPenduduk(penduduk);
-            if (btnVerifikasi.getText().equals("Verifikasi")) {
-                k.setVerifikasi(true);
-                repoKtp.verifikasi(k);
-                btnVerifikasi.setText("Unerifikasi");
-            } else {
-                k.setVerifikasi(false);
-                repoKtp.verifikasi(k);
-                btnVerifikasi.setText("Verifikasi");
-            }
+                SuratPengantar k = new SuratPengantar();
+                k.setNo_sp(txtNoSp.getText());
+                Penduduk penduduk = new Penduduk();
+                penduduk.setNik(txtNik.getText());
+                k.setPenduduk(penduduk);
+                if (btnVerifikasi.getText().equals("Verifikasi")) {
+                    k.setVerifikasi(true);
+                    repoKtp.verifikasi(k);
+                    btnVerifikasi.setText("Unerifikasi");
+                } else {
+                    k.setVerifikasi(false);
+                    repoKtp.verifikasi(k);
+                    btnVerifikasi.setText("Verifikasi");
+                }
                 JOptionPane.showMessageDialog(rootPane, "Berhasil !");
                 refreshDataTablesByName();
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Tidak dapat merubah memverifikasi", getTitle(), JOptionPane.ERROR_MESSAGE);
-                Logger.getLogger(DataKtpView.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(DataSpView.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         } else {
@@ -700,10 +712,12 @@ public class DaftarKtpView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JToolBar jToolBar1;
@@ -713,6 +727,7 @@ public class DaftarKtpView extends javax.swing.JInternalFrame {
     private javax.swing.JMenuItem pmnuUbah;
     private javax.swing.JTable tableView;
     private javax.swing.JTextField txtCari;
+    private javax.swing.JTextArea txtKeperluan;
     private javax.swing.JTextField txtNama;
     private javax.swing.JTextField txtNamaIbu;
     private javax.swing.JTextField txtNik;
@@ -723,13 +738,13 @@ public class DaftarKtpView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txt_tmp_lahir;
     // End of variables declaration//GEN-END:variables
 
-    public void setFields(Ktp ktp) {
+    public void setFields(SuratPengantar ktp) {
         txtNoSp.setText(ktp.getNo_sp());
         txtTglPengajuan.setText(ktp.getTgl().toString());
         txtNik.setText(ktp.getPenduduk().getNik());
         if (ktp.isVerifikasi()) {
             btnVerifikasi.setText("Unverifikasi");
-            
+
         } else {
             btnVerifikasi.setText("Verifikasi");
         }
@@ -739,6 +754,7 @@ public class DaftarKtpView extends javax.swing.JInternalFrame {
         txt_tmp_lahir.setText(ktp.getPenduduk().getTmp_lahir());
         txt_tgl_lahir.setText(ktp.getPenduduk().getTgl_lahir().toString());
         txt_kelamin.setText(ktp.getPenduduk().getKelamin());
+        txtKeperluan.setText(ktp.getKeperluan());
 
     }
 
@@ -749,6 +765,7 @@ public class DaftarKtpView extends javax.swing.JInternalFrame {
         txt_tmp_lahir.setText("");
         txt_tgl_lahir.setText("");
         txt_kelamin.setText("");
+        txtKeperluan.setText("");
     }
 
     void btnTambahRequesFocus() {

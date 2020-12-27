@@ -2,6 +2,7 @@ CREATE VIEW v_ktp AS SELECT
     tb_ktp.no_sp AS 'no_sp',
     tb_ktp.tgl AS 'tgl',
     tb_ktp.verifikasi AS 'verifikasi',
+    tb_ktp.keperluan AS 'keperluan',
     
     tb_penduduk.nik AS 'nik',
     tb_penduduk.nama as 'nama',

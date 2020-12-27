@@ -6,17 +6,11 @@
 package aplikasi.view.menu.penduduk;
 
 import aplikasi.config.KoneksiDB;
-import aplikasi.config.ValueFormatter;
 import aplikasi.controller.TableViewController;
 import aplikasi.entity.Penduduk;
-import aplikasi.entity.KategoriAset;
-import aplikasi.entity.LokasiAset;
-import aplikasi.entity.Kepemilikan;
-import aplikasi.entity.StatusAset;
 import aplikasi.entity.Users;
 import aplikasi.service.ServicePenduduk;
 import aplikasi.view.MainMenuView;
-import aplikasi.view.menu.laporan.LaporanLihatTransaksi;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
@@ -519,16 +513,16 @@ public class DaftarPendudukView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tableViewMouseReleased
 
     private void pmnuLihatTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pmnuLihatTransaksiActionPerformed
-        if (tableController.isSelected()) {
-            Penduduk penduduk = daftarAset.get(tableController.getRowSelected());
-            LaporanLihatTransaksi view = new LaporanLihatTransaksi(menuController, penduduk, true);
-            view.setLocationRelativeTo(null);
-            view.setTitle("Histori Transaksi");
-            view.setResizable(false);
-            view.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(this, "Data Aset belum dipilih!", getTitle(), JOptionPane.WARNING_MESSAGE);
-        }
+//        if (tableController.isSelected()) {
+//            Penduduk penduduk = daftarAset.get(tableController.getRowSelected());
+//            LaporanLihatTransaksi view = new LaporanLihatTransaksi(menuController, penduduk, true);
+//            view.setLocationRelativeTo(null);
+//            view.setTitle("Histori Transaksi");
+//            view.setResizable(false);
+//            view.setVisible(true);
+//        } else {
+//            JOptionPane.showMessageDialog(this, "Data Aset belum dipilih!", getTitle(), JOptionPane.WARNING_MESSAGE);
+//        }
     }//GEN-LAST:event_pmnuLihatTransaksiActionPerformed
 
     private void pmnuUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pmnuUbahActionPerformed

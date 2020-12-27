@@ -10,21 +10,7 @@ import aplikasi.config.FieldMinimal;
 import aplikasi.config.KoneksiDB;
 import aplikasi.config.ValueFormatter;
 import aplikasi.entity.Penduduk;
-import aplikasi.entity.KategoriAset;
-import aplikasi.entity.Kepemilikan;
-import aplikasi.entity.LokasiAset;
-import aplikasi.entity.StatusAset;
 import aplikasi.entity.Users;
-import aplikasi.repository.RepoKategoriAset;
-import aplikasi.repository.RepoKepemilikan;
-import aplikasi.repository.RepoLokasiAset;
-import aplikasi.repository.RepoStatusAset;
-import aplikasi.service.ServicePenduduk;
-import aplikasi.service.ServiceKategoriAset;
-import aplikasi.service.ServiceKepemilikan;
-import aplikasi.service.ServiceLokasiAset;
-import aplikasi.service.ServiceStatusAset;
-import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -34,6 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import aplikasi.repository.RepoPenduduk;
+import aplikasi.service.ServicePenduduk;
 
 /**
  *
@@ -44,18 +31,7 @@ public class DataPendudukView extends javax.swing.JDialog {
     private Boolean update;
 
     private final RepoPenduduk repoPenduduk = new ServicePenduduk(KoneksiDB.getDataSource());
-    private final RepoKategoriAset repoKategori = new ServiceKategoriAset(KoneksiDB.getDataSource());
-    private final RepoStatusAset repoStatus = new ServiceStatusAset(KoneksiDB.getDataSource());
-    private final RepoLokasiAset repoLokasi = new ServiceLokasiAset(KoneksiDB.getDataSource());
-    private final RepoKepemilikan repoKepemilikan = new ServiceKepemilikan(KoneksiDB.getDataSource());
-
-    private List<KategoriAset> daftarKategori = new ArrayList<>();
-    private List<StatusAset> daftarStatus = new ArrayList<>();
-    private List<LokasiAset> daftarLokasi = new ArrayList<>();
-    private List<Kepemilikan> daftarKepemilikan = new ArrayList<>();
-
     private DaftarPendudukView daftarPendudukController = null;
-    private KategoriAset kategoriAset;
     private Penduduk penduduk;
     private FieldMinimal jTextFieldMinimal;
     private Users p = null;
@@ -99,12 +75,6 @@ public class DataPendudukView extends javax.swing.JDialog {
         this.jTextFieldMinimal = new FieldMinimal();
         this.txtTglLahir.setDate(new java.util.Date());
         txtNik.requestFocus();
-//        ambilKodeAset();
-//        refresDataKategoriAset();
-//        refresDataStatus();
-//        refresDataLokasi();
-//        refresDataCustomer();
-//        textFieldLimit();
     }
 
     DataPendudukView(java.awt.Frame parent, DaftarPendudukView daftarPendudukController, Penduduk penduduk, boolean modal, Users p) {
@@ -118,10 +88,6 @@ public class DataPendudukView extends javax.swing.JDialog {
         this.txtTglLahir.setDate(new java.util.Date());
         txtNik.setEditable(false);
         txtNama.requestFocus();
-//        refresDataKategoriAset();
-//        refresDataStatus();
-//        refresDataLokasi();
-//        refresDataCustomer();
         textFieldLimit();
         setFields(penduduk);
     }
@@ -618,7 +584,7 @@ public class DataPendudukView extends javax.swing.JDialog {
                     daftarPendudukController.setFields(penduduk);
                 }
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(this, "Tidak dapat merubah data barang", getTitle(), JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, ex, getTitle(), JOptionPane.ERROR_MESSAGE);
                 Logger.getLogger(DataPendudukView.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
@@ -632,7 +598,7 @@ public class DataPendudukView extends javax.swing.JDialog {
                 }
                 this.dispose();
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(this, "Tidak dapat menyimpan data barang baru", getTitle(), JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, ex, getTitle(), JOptionPane.ERROR_MESSAGE);
                 Logger.getLogger(DataPendudukView.class.getName()).log(Level.SEVERE, null, ex);
             }
         }

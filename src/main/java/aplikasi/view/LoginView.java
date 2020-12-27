@@ -104,7 +104,7 @@ public class LoginView extends javax.swing.JDialog {
 
         jLabel2.setText("Password");
 
-        txtxUsername.setText("panji");
+        txtxUsername.setText("dhiskar");
         txtxUsername.setToolTipText("Isi dengan username");
         txtxUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,7 +117,7 @@ public class LoginView extends javax.swing.JDialog {
             }
         });
 
-        txtPassword.setText("Admin1");
+        txtPassword.setText("Kepala1");
         txtPassword.setToolTipText("Isi dengan password");
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

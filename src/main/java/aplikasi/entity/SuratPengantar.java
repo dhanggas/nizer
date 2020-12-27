@@ -11,10 +11,19 @@ import java.sql.Date;
  *
  * @author dhang
  */
-public class Ktp {
+public class SuratPengantar {
     private String no_sp;
     private Date tgl;
     private Penduduk penduduk;
+    private String keperluan;
+
+    public String getKeperluan() {
+        return keperluan;
+    }
+
+    public void setKeperluan(String keperluan) {
+        this.keperluan = keperluan;
+    }
     private Boolean verifikasi;
 
     public Boolean isVerifikasi() {

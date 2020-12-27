@@ -6,26 +6,8 @@
 package aplikasi.view;
 
 import aplikasi.entity.Users;
-import aplikasi.view.menu.kepemilikan.DaftarKepemilikanView;
-import aplikasi.view.menu.kepemilikan.DataKepemilikanView;
-import aplikasi.view.menu.status.DaftarStatusView;
-import aplikasi.view.menu.status.DataStatusAsetView;
 import aplikasi.view.menu.user.DaftarUserView;
-import aplikasi.view.menu.user.DataUserView;
-import aplikasi.view.menu.penduduk.DataPendudukView;
-import aplikasi.view.menu.kategori.DaftarKategoriView;
-import aplikasi.view.menu.kategori.DataKategoriAset;
-import aplikasi.view.menu.laporan.LaporanAset;
-import aplikasi.view.menu.laporan.LaporanPeminjaman;
-import aplikasi.view.menu.laporan.LaporanPengembalian;
-import aplikasi.view.menu.laporan.LaporanSirkulasiAsetView;
-import aplikasi.view.menu.lokasi.DaftarLokasiView;
-import aplikasi.view.menu.lokasi.DataLokasiView;
-import aplikasi.view.menu.pengantarktp.DataPengantarKtpView;
-import aplikasi.view.menu.pengembalian.pinjaman.DataPengembalianView;
-import aplikasi.view.menu.approval.ApprovalTransaksi;
-import aplikasi.view.menu.ktp.DaftarKtpView;
-import aplikasi.view.menu.ktp.DataKtpView;
+import aplikasi.view.menu.sp.DaftarSpView;
 import aplikasi.view.menu.penduduk.DaftarPendudukView;
 import java.beans.PropertyVetoException;
 import java.text.SimpleDateFormat;
@@ -119,17 +101,13 @@ public class MainMenuView extends javax.swing.JFrame {
         jSeparator5 = new javax.swing.JPopupMenu.Separator();
         mniPenduduk = new javax.swing.JMenuItem();
         mnuPengantar = new javax.swing.JMenu();
-        mniPengantarKtp = new javax.swing.JMenuItem();
-        mniPengantarKK = new javax.swing.JMenuItem();
-        mniPengantarPindahan = new javax.swing.JMenuItem();
+        mniSuratPengantar = new javax.swing.JMenuItem();
         jSeparator11 = new javax.swing.JPopupMenu.Separator();
         mniSKL = new javax.swing.JMenuItem();
         mniSKM = new javax.swing.JMenuItem();
         mnuLaporan = new javax.swing.JMenu();
-        mniLapPengantarKtp = new javax.swing.JMenuItem();
+        mniLapSuratPengantar = new javax.swing.JMenuItem();
         jSeparator8 = new javax.swing.JPopupMenu.Separator();
-        mniLapPengantarKK = new javax.swing.JMenuItem();
-        mniLapPengantarPindahan = new javax.swing.JMenuItem();
         jSeparator10 = new javax.swing.JPopupMenu.Separator();
         mniLapSKL = new javax.swing.JMenuItem();
         mniLapSKM = new javax.swing.JMenuItem();
@@ -315,29 +293,15 @@ public class MainMenuView extends javax.swing.JFrame {
 
         mnuPengantar.setText("Surat Pengantar");
 
-        mniPengantarKtp.setForeground(new java.awt.Color(0, 110, 4));
-        mniPengantarKtp.setText("Pengantar KTP");
-        mniPengantarKtp.setEnabled(false);
-        mniPengantarKtp.addActionListener(new java.awt.event.ActionListener() {
+        mniSuratPengantar.setForeground(new java.awt.Color(0, 110, 4));
+        mniSuratPengantar.setText("Surat Pengantar");
+        mniSuratPengantar.setEnabled(false);
+        mniSuratPengantar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniPengantarKtpActionPerformed(evt);
+                mniSuratPengantarActionPerformed(evt);
             }
         });
-        mnuPengantar.add(mniPengantarKtp);
-
-        mniPengantarKK.setText("Pengantar KK");
-        mniPengantarKK.setEnabled(false);
-        mnuPengantar.add(mniPengantarKK);
-
-        mniPengantarPindahan.setForeground(new java.awt.Color(0, 2, 255));
-        mniPengantarPindahan.setText("Pengantar Surat Pindah");
-        mniPengantarPindahan.setEnabled(false);
-        mniPengantarPindahan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniPengantarPindahanActionPerformed(evt);
-            }
-        });
-        mnuPengantar.add(mniPengantarPindahan);
+        mnuPengantar.add(mniSuratPengantar);
         mnuPengantar.add(jSeparator11);
 
         mniSKL.setText("Surat Kelahiran");
@@ -362,35 +326,15 @@ public class MainMenuView extends javax.swing.JFrame {
             }
         });
 
-        mniLapPengantarKtp.setText("Pengantar KTP");
-        mniLapPengantarKtp.setEnabled(false);
-        mniLapPengantarKtp.addActionListener(new java.awt.event.ActionListener() {
+        mniLapSuratPengantar.setText("Pengantar KTP");
+        mniLapSuratPengantar.setEnabled(false);
+        mniLapSuratPengantar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniLapPengantarKtpActionPerformed(evt);
+                mniLapSuratPengantarActionPerformed(evt);
             }
         });
-        mnuLaporan.add(mniLapPengantarKtp);
+        mnuLaporan.add(mniLapSuratPengantar);
         mnuLaporan.add(jSeparator8);
-
-        mniLapPengantarKK.setForeground(new java.awt.Color(0, 110, 4));
-        mniLapPengantarKK.setText("Pengantar KK");
-        mniLapPengantarKK.setEnabled(false);
-        mniLapPengantarKK.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniLapPengantarKKActionPerformed(evt);
-            }
-        });
-        mnuLaporan.add(mniLapPengantarKK);
-
-        mniLapPengantarPindahan.setForeground(new java.awt.Color(0, 2, 255));
-        mniLapPengantarPindahan.setText("Pengantar Pindahan");
-        mniLapPengantarPindahan.setEnabled(false);
-        mniLapPengantarPindahan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniLapPengantarPindahanActionPerformed(evt);
-            }
-        });
-        mnuLaporan.add(mniLapPengantarPindahan);
         mnuLaporan.add(jSeparator10);
 
         mniLapSKL.setText("Surat Kelahiran");
@@ -470,15 +414,6 @@ public class MainMenuView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mniUsersActionPerformed
 
-    private void mniLapPengantarPindahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLapPengantarPindahanActionPerformed
-        try {
-            LaporanPengembalian view = new LaporanPengembalian(this, p);
-            setInnerLayout(view);
-        } catch (PropertyVetoException ex) {
-            Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_mniLapPengantarPindahanActionPerformed
-
     private void mniLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLogoutActionPerformed
         this.setLoginEnabled(false);
         this.enabledMenu(false);
@@ -503,61 +438,43 @@ public class MainMenuView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_mniTentangAplikasiActionPerformed
 
-    private void mniPengantarPindahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniPengantarPindahanActionPerformed
+    private void mniSuratPengantarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniSuratPengantarActionPerformed
         try {
-            DataPengembalianView view = new DataPengembalianView(this, p);
+            DaftarSpView view = new DaftarSpView(this, p);
             setInnerLayout(view);
         } catch (PropertyVetoException ex) {
             Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_mniPengantarPindahanActionPerformed
-
-    private void mniPengantarKtpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniPengantarKtpActionPerformed
-        try {
-            DaftarKtpView view = new DaftarKtpView(this, p);
-            setInnerLayout(view);
-        } catch (PropertyVetoException ex) {
-            Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_mniPengantarKtpActionPerformed
+    }//GEN-LAST:event_mniSuratPengantarActionPerformed
 
     private void mnuLaporanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuLaporanActionPerformed
     }//GEN-LAST:event_mnuLaporanActionPerformed
 
     private void mniLapSKLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLapSKLActionPerformed
-        try {
-            LaporanSirkulasiAsetView view = new LaporanSirkulasiAsetView(this, p);
-            setInnerLayout(view);
-        } catch (Exception ex) {
-            Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            LaporanSirkulasiAsetView view = new LaporanSirkulasiAsetView(this, p);
+//            setInnerLayout(view);
+//        } catch (Exception ex) {
+//            Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }//GEN-LAST:event_mniLapSKLActionPerformed
 
-    private void mniLapPengantarKtpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLapPengantarKtpActionPerformed
-        try {
-            LaporanAset view = new LaporanAset(this, p);
-            setInnerLayout(view);
-        } catch (Exception ex) {
-            Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_mniLapPengantarKtpActionPerformed
-
-    private void mniLapPengantarKKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLapPengantarKKActionPerformed
-        try {
-            LaporanPeminjaman view = new LaporanPeminjaman(this, p);
-            setInnerLayout(view);
-        } catch (PropertyVetoException ex) {
-            Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_mniLapPengantarKKActionPerformed
+    private void mniLapSuratPengantarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLapSuratPengantarActionPerformed
+//        try {
+//            LaporanAset view = new LaporanAset(this, p);
+//            setInnerLayout(view);
+//        } catch (Exception ex) {
+//            Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+    }//GEN-LAST:event_mniLapSuratPengantarActionPerformed
 
     private void mniSKLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniSKLActionPerformed
-        try {
-            ApprovalTransaksi view = new ApprovalTransaksi(this, p);
-            setInnerLayout(view);
-        } catch (PropertyVetoException ex) {
-            Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            ApprovalTransaksi view = new ApprovalTransaksi(this, p);
+//            setInnerLayout(view);
+//        } catch (PropertyVetoException ex) {
+//            Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }//GEN-LAST:event_mniSKLActionPerformed
 
     private void mniLapSKMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLapSKMActionPerformed
@@ -569,9 +486,7 @@ public class MainMenuView extends javax.swing.JFrame {
     }
 
     public void setEnabledMenuLaporan(Boolean aktif) {
-        this.mniLapPengantarKtp.setEnabled(aktif);
-        this.mniLapPengantarKK.setEnabled(aktif);
-        this.mniLapPengantarPindahan.setEnabled(aktif);
+        this.mniLapSuratPengantar.setEnabled(aktif);
         this.mniLapSKL.setEnabled(aktif);
         this.mniLapSKM.setEnabled(aktif);
     }
@@ -593,15 +508,11 @@ public class MainMenuView extends javax.swing.JFrame {
     public void enabledMenu(Boolean aktif) {
         this.mniUsers.setEnabled(aktif);
         this.mniPenduduk.setEnabled(aktif);
-        this.mniPengantarKtp.setEnabled(aktif);
-        this.mniPengantarPindahan.setEnabled(aktif);
-        this.mniLapPengantarPindahan.setEnabled(aktif);
+        this.mniSuratPengantar.setEnabled(aktif);
         this.mniSKL.setEnabled(aktif);
         this.mniSKM.setEnabled(aktif);
 
-        this.mniLapPengantarKtp.setEnabled(aktif);
-        this.mniLapPengantarKK.setEnabled(aktif);
-        this.mniLapPengantarPindahan.setEnabled(aktif);
+        this.mniLapSuratPengantar.setEnabled(aktif);
         this.mniLapSKL.setEnabled(aktif);
         this.mniLapSKM.setEnabled(aktif);
 
@@ -636,19 +547,15 @@ public class MainMenuView extends javax.swing.JFrame {
     private javax.swing.JLabel lblTanggal;
     private javax.swing.JLabel lblUser;
     private javax.swing.JMenuItem mniExit;
-    private javax.swing.JMenuItem mniLapPengantarKK;
-    private javax.swing.JMenuItem mniLapPengantarKtp;
-    private javax.swing.JMenuItem mniLapPengantarPindahan;
     private javax.swing.JMenuItem mniLapSKL;
     private javax.swing.JMenuItem mniLapSKM;
+    private javax.swing.JMenuItem mniLapSuratPengantar;
     private javax.swing.JMenuItem mniLogin;
     private javax.swing.JMenuItem mniLogout;
     private javax.swing.JMenuItem mniPenduduk;
-    private javax.swing.JMenuItem mniPengantarKK;
-    private javax.swing.JMenuItem mniPengantarKtp;
-    private javax.swing.JMenuItem mniPengantarPindahan;
     private javax.swing.JMenuItem mniSKL;
     private javax.swing.JMenuItem mniSKM;
+    private javax.swing.JMenuItem mniSuratPengantar;
     private javax.swing.JMenuItem mniTentangAplikasi;
     private javax.swing.JMenuItem mniUsers;
     private javax.swing.JMenu mnuAplikasi;
@@ -659,9 +566,7 @@ public class MainMenuView extends javax.swing.JFrame {
 
     void setEnabledMenuAdmin(boolean aktif) {
         this.mniPenduduk.setEnabled(aktif);
-        this.mniPengantarKtp.setEnabled(aktif);
-        this.mniPengantarKK.setEnabled(aktif);
-        this.mniPengantarPindahan.setEnabled(aktif);
+        this.mniSuratPengantar.setEnabled(aktif);
         this.mniSKL.setEnabled(aktif);
         this.mniSKM.setEnabled(aktif);
         

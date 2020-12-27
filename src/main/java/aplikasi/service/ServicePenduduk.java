@@ -6,11 +6,6 @@
 package aplikasi.service;
 
 import aplikasi.entity.Penduduk;
-import aplikasi.entity.KategoriAset;
-import aplikasi.entity.LokasiAset;
-import aplikasi.entity.Kepemilikan;
-import aplikasi.entity.StatusAset;
-import aplikasi.entity.Users;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

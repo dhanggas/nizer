@@ -3,7 +3,7 @@
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="ireport.zoom" value="1.7715610000000022"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="422"/>
 	<parameter name="kode" class="java.lang.String"/>
 	<parameter name="tanggal" class="java.util.Date"/>
 	<parameter name="pembawa" class="java.lang.String"/>
@@ -50,6 +50,9 @@
 	</field>
 	<field name="kelamin" class="java.lang.String">
 		<fieldDescription><![CDATA[penduduk.kelamin]]></fieldDescription>
+	</field>
+	<field name="keperluan" class="java.lang.String">
+		<fieldDescription><![CDATA[keperluan]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -344,14 +347,6 @@ Tangerang]]></text>
 				<text><![CDATA[Maksut / Keperluan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="106" y="276" width="163" height="20" uuid="90fa2fa8-f073-4875-ae3e-464d3a6166e6"/>
-				<textElement verticalAlignment="Middle">
-					<font isBold="true"/>
-					<paragraph firstLineIndent="5"/>
-				</textElement>
-				<text><![CDATA[Mengurus Pembuatan KTP]]></text>
-			</staticText>
-			<staticText>
 				<reportElement x="3" y="15" width="529" height="20" uuid="4bd4980d-b527-4ea9-9ba4-4db983760cc5"/>
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[Yang bertanda tangan dibawan ini pengurus Desa Sarakan, Kecamatan Sepatan, Kabupaten Tangerang, dengan ini]]></text>
@@ -361,6 +356,14 @@ Tangerang]]></text>
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[menyatan bahwa :]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="106" y="276" width="263" height="20" uuid="8e5e6014-9c5b-4942-9748-da552beb84e1"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{keperluan}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>

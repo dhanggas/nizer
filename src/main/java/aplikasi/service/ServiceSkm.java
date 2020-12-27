@@ -5,9 +5,8 @@
  */
 package aplikasi.service;
 
-import aplikasi.entity.Ktp;
+import aplikasi.entity.SuratPengantar;
 import aplikasi.entity.Penduduk;
-import aplikasi.repository.RepoKtp;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,27 +15,28 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.sql.DataSource;
+import aplikasi.repository.RepoSp;
 
 /**
  *
  * @author dhiskar
  */
-public class ServiceKtp implements RepoKtp {
+public class ServiceSkm implements RepoSp {
 
     private DataSource ds;
 
-    public ServiceKtp(DataSource ds) {
+    public ServiceSkm(DataSource ds) {
         this.ds = ds;
     }
 
     @Override
-    public List<Ktp> findByKategoriKode(String kode) throws SQLException {
+    public List<SuratPengantar> findByKategoriKode(String kode) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Ktp> findByNama(String nama) throws SQLException {
-        List<Ktp> list = new ArrayList<>();
+    public List<SuratPengantar> findByNama(String nama) throws SQLException {
+        List<SuratPengantar> list = new ArrayList<>();
         String sql = "SELECT * FROM v_ktp \n"
                 + "WHERE no_sp like CONCAT('%', ?, '%') ";
 
@@ -47,10 +47,11 @@ public class ServiceKtp implements RepoKtp {
         ResultSet rs = ps.executeQuery();
 
         while (rs.next()) {
-            Ktp a = new Ktp();
+            SuratPengantar a = new SuratPengantar();
             a.setNo_sp(rs.getString("no_sp"));
             a.setTgl(rs.getDate("tgl"));
             a.setVerifikasi(rs.getBoolean("verifikasi"));
+            a.setKeperluan(rs.getString("keperluan"));
             
              Penduduk p = new Penduduk();
             p.setNik(rs.getString("nik"));
@@ -83,29 +84,30 @@ public class ServiceKtp implements RepoKtp {
     }
 
     @Override
-    public List<Ktp> findByQtyZeroByName(String nama) throws SQLException {
+    public List<SuratPengantar> findByQtyZeroByName(String nama) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Ktp> findByQtyOneByName(String nama) throws SQLException {
+    public List<SuratPengantar> findByQtyOneByName(String nama) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Ktp> findFilterAlll(String text, String toString, String toString0, String text0, String toString1, String toString2, String toString3, String toString4) throws SQLException {
+    public List<SuratPengantar> findFilterAlll(String text, String toString, String toString0, String text0, String toString1, String toString2, String toString3, String toString4) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Ktp save(Ktp value) throws SQLException {
-        String sql = "INSERT INTO tb_ktp (no_sp, tgl, nik) VALUES (?,?,?)";
+    public SuratPengantar save(SuratPengantar value) throws SQLException {
+        String sql = "INSERT INTO tb_ktp (no_sp, tgl, nik, keperluan) VALUES (?,?,?,?)";
 
         Connection connect = ds.getConnection();
         PreparedStatement ps = connect.prepareStatement(sql);
         ps.setString(1, value.getNo_sp());
         ps.setString(2, value.getTgl().toString());
         ps.setString(3, value.getPenduduk().getNik());
+        ps.setString(4, value.getKeperluan().toString());
         
         ps.executeUpdate();
 
@@ -115,14 +117,15 @@ public class ServiceKtp implements RepoKtp {
     }
 
     @Override
-    public Ktp update(Ktp a) throws SQLException {
-        String sql = "UPDATE tb_ktp SET tgl = ?, nik = ? WHERE no_sp = ?";
+    public SuratPengantar update(SuratPengantar a) throws SQLException {
+        String sql = "UPDATE tb_ktp SET tgl = ?, nik = ?, keperluan = ? WHERE no_sp = ?";
 
         Connection connect = ds.getConnection();
         PreparedStatement ps = connect.prepareStatement(sql);
          ps.setString(1, a.getTgl().toString());
         ps.setString(2, a.getPenduduk().getNik());
-        ps.setString(3, a.getNo_sp());
+        ps.setString(3, a.getKeperluan().toString());
+        ps.setString(4, a.getNo_sp());
         ps.executeUpdate();
 
         ps.close();
@@ -131,18 +134,19 @@ public class ServiceKtp implements RepoKtp {
     }
 
     @Override
-    public List<Ktp> findAll() throws SQLException {
+    public List<SuratPengantar> findAll() throws SQLException {
         String sql = "SELECT * FROM v_ktp";
-        List<Ktp> list = new ArrayList<>();
+        List<SuratPengantar> list = new ArrayList<>();
 
         Connection connect = ds.getConnection();
         Statement st = connect.createStatement();
         ResultSet rs = st.executeQuery(sql);
         while (rs.next()) {
-            Ktp a = new Ktp();
+            SuratPengantar a = new SuratPengantar();
             a.setNo_sp(rs.getString("no_sp"));
             a.setTgl(rs.getDate("tgl"));
             a.setVerifikasi(rs.getBoolean("verifikasi"));
+            a.setKeperluan(rs.getString("keperluan"));
             
             Penduduk p = new Penduduk();
             p.setNik(rs.getString("nik"));
@@ -176,7 +180,7 @@ public class ServiceKtp implements RepoKtp {
     }
 
     @Override
-    public Ktp findOne(String id) throws SQLException {
+    public SuratPengantar findOne(String id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -199,12 +203,12 @@ public class ServiceKtp implements RepoKtp {
     }
 
     @Override
-    public List<Ktp> findMaxValue() throws SQLException {
+    public List<SuratPengantar> findMaxValue() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Ktp verifikasi(Ktp a) throws SQLException {
+    public SuratPengantar verifikasi(SuratPengantar a) throws SQLException {
         String sql = "UPDATE tb_ktp SET verifikasi = ? WHERE no_sp = ?";
 
         Connection connect = ds.getConnection();

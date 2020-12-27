@@ -3,29 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package aplikasi.view.menu.ktp;
+package aplikasi.view.menu.sp;
 
 import aplikasi.config.FieldLimit;
 import aplikasi.config.FieldMinimal;
 import aplikasi.config.KoneksiDB;
 import aplikasi.config.ValueFormatter;
 import aplikasi.entity.Penduduk;
-import aplikasi.entity.KategoriAset;
-import aplikasi.entity.Kepemilikan;
-import aplikasi.entity.Ktp;
-import aplikasi.entity.LokasiAset;
-import aplikasi.entity.StatusAset;
+import aplikasi.entity.SuratPengantar;
 import aplikasi.entity.Users;
-import aplikasi.repository.RepoKategoriAset;
-import aplikasi.repository.RepoKepemilikan;
-import aplikasi.repository.RepoKtp;
-import aplikasi.repository.RepoLokasiAset;
-import aplikasi.repository.RepoStatusAset;
 import aplikasi.service.ServicePenduduk;
-import aplikasi.service.ServiceKategoriAset;
-import aplikasi.service.ServiceKepemilikan;
-import aplikasi.service.ServiceLokasiAset;
-import aplikasi.service.ServiceStatusAset;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -34,34 +21,25 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import aplikasi.repository.RepoPenduduk;
-import aplikasi.service.ServiceKtp;
+import aplikasi.service.ServiceSp;
 import java.sql.Date;
 import java.util.Iterator;
+import aplikasi.repository.RepoSp;
 
 /**
  *
  * @author soraya
  */
-public class DataKtpView extends javax.swing.JDialog {
+public class DataSpView extends javax.swing.JDialog {
 
     private Boolean update;
 
     private final RepoPenduduk repoPenduduk = new ServicePenduduk(KoneksiDB.getDataSource());
-    private final RepoKtp repoKtp = new ServiceKtp(KoneksiDB.getDataSource());
-    private final RepoKategoriAset repoKategori = new ServiceKategoriAset(KoneksiDB.getDataSource());
-    private final RepoStatusAset repoStatus = new ServiceStatusAset(KoneksiDB.getDataSource());
-    private final RepoLokasiAset repoLokasi = new ServiceLokasiAset(KoneksiDB.getDataSource());
-    private final RepoKepemilikan repoKepemilikan = new ServiceKepemilikan(KoneksiDB.getDataSource());
+    private final RepoSp repoKtp = new ServiceSp(KoneksiDB.getDataSource());
 
-    private List<KategoriAset> daftarKategori = new ArrayList<>();
-    private List<StatusAset> daftarStatus = new ArrayList<>();
-    private List<LokasiAset> daftarLokasi = new ArrayList<>();
-    private List<Kepemilikan> daftarKepemilikan = new ArrayList<>();
-
-    private DaftarKtpView daftarKtpController = null;
-    private KategoriAset kategoriAset;
+    private DaftarSpView daftarKtpController = null;
     private Penduduk penduduk;
-    private Ktp ktp;
+    private SuratPengantar suratPengantar;
     private FieldMinimal jTextFieldMinimal;
     private Users p = null;
 
@@ -76,60 +54,57 @@ public class DataKtpView extends javax.swing.JDialog {
     /**
      * Creates new form DataAsetView
      */
-    public DataKtpView(java.awt.Frame parent, boolean modal, Users p) {
+    public DataSpView(java.awt.Frame parent, boolean modal, Users p) {
         super(parent, modal);
         initComponents();
         setUpdate(false);
         this.daftarKtpController = null;
         this.penduduk = new Penduduk();
-        this.ktp = new Ktp();
+        this.suratPengantar = new SuratPengantar();
         this.p = p;
         this.jTextFieldMinimal = new FieldMinimal();
         this.txtTglPengajuan.setDate(new java.util.Date());
         txtNama.requestFocus();
 //        ambilKodeAset();
-        refresDataKategoriAset();
-        refresDataStatus();
-        refresDataLokasi();
-        refresDataCustomer();
         textFieldLimit();
     }
 
-    DataKtpView(java.awt.Frame parent, DaftarKtpView daftarAsetController, boolean modal, Users p) {
+    DataSpView(java.awt.Frame parent, DaftarSpView daftarAsetController, boolean modal, Users p) {
         super(parent, modal);
         initComponents();
         setUpdate(false);
         this.daftarKtpController = daftarAsetController;
         this.penduduk = new Penduduk();
-        this.ktp = new Ktp();
+        this.suratPengantar = new SuratPengantar();
         this.p = p;
         this.jTextFieldMinimal = new FieldMinimal();
         this.txtTglPengajuan.setDate(new java.util.Date());
         txtNoSp.requestFocus();
-//        ambilKodeAset();
-//        refresDataKategoriAset();
-//        refresDataStatus();
-//        refresDataLokasi();
-//        refresDataCustomer();
-//        textFieldLimit();
     }
 
-    DataKtpView(java.awt.Frame parent, DaftarKtpView daftarKtpController, Ktp ktp, boolean modal, Users p) {
+    DataSpView(java.awt.Frame parent, DaftarSpView daftarKtpController, SuratPengantar ktp, boolean modal, Users p) {
         super(parent, modal);
         initComponents();
         setUpdate(true);
         this.daftarKtpController = daftarKtpController;
         this.penduduk = new Penduduk();
-        this.ktp = new Ktp();
+        this.suratPengantar = new SuratPengantar();
         this.p = p;
         this.jTextFieldMinimal = new FieldMinimal();
         this.txtTglPengajuan.setDate(new java.util.Date());
         txtNoSp.setEditable(false);
         txtNik.requestFocus();
-//        refresDataKategoriAset();
-//        refresDataStatus();
-//        refresDataLokasi();
-//        refresDataCustomer();
+        if (ktp.getKeperluan().equals(rbKeperluanKtp.getText())) {
+            rbKeperluanKtp.setSelected(true);
+        }else if(ktp.getKeperluan().equals(rbKeperluanKK.getText())){
+            rbKeperluanKK.setSelected(true);
+        }else {
+            rbKeperluanLLN.setSelected(true);
+            txtKeperluan.setEditable(true);
+            txtKeperluan.setText(ktp.getKeperluan());
+            txtKeperluan.requestFocus();
+        }
+        
         textFieldLimit();
         setFieldsKtp(ktp);
     }
@@ -145,6 +120,7 @@ public class DataKtpView extends javax.swing.JDialog {
 
         jenisKelaminGroup = new javax.swing.ButtonGroup();
         JenisWNGroup = new javax.swing.ButtonGroup();
+        jenisKeperluanGroup = new javax.swing.ButtonGroup();
         jToolBar1 = new javax.swing.JToolBar();
         btnSimpan = new javax.swing.JButton();
         btnKembali = new javax.swing.JButton();
@@ -166,6 +142,11 @@ public class DataKtpView extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         txtTglPengajuan = new com.toedter.calendar.JDateChooser();
         txtNoSp = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        rbKeperluanKtp = new javax.swing.JRadioButton();
+        rbKeperluanKK = new javax.swing.JRadioButton();
+        rbKeperluanLLN = new javax.swing.JRadioButton();
+        txtKeperluan = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Data KTP");
@@ -207,7 +188,7 @@ public class DataKtpView extends javax.swing.JDialog {
 
         getContentPane().add(jToolBar1, java.awt.BorderLayout.PAGE_END);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Data KTP"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Data"));
         jPanel1.setToolTipText("");
 
         jLabel1.setText("No SP");
@@ -295,22 +276,24 @@ public class DataKtpView extends javax.swing.JDialog {
                     .addComponent(txtNamaIbu)
                     .addComponent(txtNik, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTempatLahir, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txtKelamin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                        .addComponent(txtTglLahir, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtKelamin, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                    .addComponent(txtTglLahir))
+                .addContainerGap(228, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
-                    .addComponent(txtNik))
-                .addGap(11, 11, 11)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(11, 11, 11))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(txtNik, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(txtNama))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtNama, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -321,13 +304,13 @@ public class DataKtpView extends javax.swing.JDialog {
                     .addComponent(txtTempatLahir, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(txtTglLahir))
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtTglLahir, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtKelamin, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49))
+                .addContainerGap())
         );
 
         jLabel3.setText("Tanggal Pengajuan");
@@ -336,6 +319,46 @@ public class DataKtpView extends javax.swing.JDialog {
         txtNoSp.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNoSpKeyReleased(evt);
+            }
+        });
+
+        jLabel21.setText("Keperluan");
+
+        jenisKeperluanGroup.add(rbKeperluanKtp);
+        rbKeperluanKtp.setText("Pengurusan KTP");
+
+        jenisKeperluanGroup.add(rbKeperluanKK);
+        rbKeperluanKK.setText("Pengurusan Kartu Keluarga");
+        rbKeperluanKK.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                rbKeperluanKKFocusGained(evt);
+            }
+        });
+        rbKeperluanKK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbKeperluanKKActionPerformed(evt);
+            }
+        });
+
+        jenisKeperluanGroup.add(rbKeperluanLLN);
+        rbKeperluanLLN.setText("LLN");
+        rbKeperluanLLN.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                rbKeperluanLLNFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                rbKeperluanLLNFocusLost(evt);
+            }
+        });
+
+        txtKeperluan.setEditable(false);
+        txtKeperluan.setToolTipText("Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter");
+        txtKeperluan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtKeperluanKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtKeperluanKeyReleased(evt);
             }
         });
 
@@ -348,14 +371,26 @@ public class DataKtpView extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTglPengajuan, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNoSp, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(228, Short.MAX_VALUE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtTglPengajuan, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNoSp, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rbKeperluanKK)
+                                    .addComponent(rbKeperluanKtp)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(rbKeperluanLLN)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtKeperluan, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -364,13 +399,23 @@ public class DataKtpView extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtNoSp)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtTglPengajuan, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rbKeperluanKtp))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rbKeperluanKK)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbKeperluanLLN)
+                    .addComponent(txtKeperluan, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -383,22 +428,21 @@ public class DataKtpView extends javax.swing.JDialog {
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
 
-        ktp.setNo_sp(txtNoSp.getText());
-        ktp.setTgl(Date.valueOf(ValueFormatter.getDateSQL(txtTglPengajuan.getDate())));
+        suratPengantar.setNo_sp(txtNoSp.getText());
+        suratPengantar.setTgl(Date.valueOf(ValueFormatter.getDateSQL(txtTglPengajuan.getDate())));
         penduduk.setNik(txtNik.getText());
-        ktp.setPenduduk(penduduk);
-//        penduduk.setNik(txtNoSp.getText());
-//        penduduk.setNama(txtNama.getText());
-//        penduduk.setNama_ibu(txtNik.getText());
-//        penduduk.setNama_ayah(txtNama.getText());
-//        penduduk.setTgl_lahir(Date.valueOf(ValueFormatter.getDateSQL(txtTglPengajuan.getDate())));
-//        penduduk.setGol_darah(txtTempatLahir.getText());
-//        penduduk.setAlamat(txtTglLahir.getText());
-//        penduduk.setRt(txtKelamin.getText());
+        suratPengantar.setPenduduk(penduduk);
+        if (rbKeperluanKtp.isSelected()) {
+            suratPengantar.setKeperluan(rbKeperluanKtp.getText());
+        }else if(rbKeperluanKK.isSelected()){
+            suratPengantar.setKeperluan(rbKeperluanKK.getText());
+        } else {
+            suratPengantar.setKeperluan(txtKeperluan.getText());
+        }
 
         if (isUpdate()) {
             try {
-                repoKtp.update(ktp);
+                repoKtp.update(suratPengantar);
                 this.dispose();
                 if (daftarKtpController != null) {
                     daftarKtpController.refreshDataTables();
@@ -406,11 +450,11 @@ public class DataKtpView extends javax.swing.JDialog {
                 }
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Tidak dapat merubah data barang", getTitle(), JOptionPane.ERROR_MESSAGE);
-                Logger.getLogger(DataKtpView.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(DataSpView.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             try {
-                repoKtp.save(ktp);
+                repoKtp.save(suratPengantar);
                 if (daftarKtpController != null) {
                     daftarKtpController.refreshDataTables();
 //                    daftarKtpController.setFields(ktp);
@@ -420,7 +464,7 @@ public class DataKtpView extends javax.swing.JDialog {
                 this.dispose();
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Tidak dapat menyimpan data barang baru", getTitle(), JOptionPane.ERROR_MESSAGE);
-                Logger.getLogger(DataKtpView.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(DataSpView.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
@@ -495,6 +539,34 @@ public class DataKtpView extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_txtNikKeyPressed
 
+    private void txtKeperluanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtKeperluanKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtKeperluanKeyPressed
+
+    private void txtKeperluanKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtKeperluanKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtKeperluanKeyReleased
+
+    private void rbKeperluanKKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbKeperluanKKActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbKeperluanKKActionPerformed
+
+    private void rbKeperluanLLNFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rbKeperluanLLNFocusGained
+        txtKeperluan.setEditable(true);
+        txtKeperluan.requestFocus();
+
+    }//GEN-LAST:event_rbKeperluanLLNFocusGained
+
+    private void rbKeperluanLLNFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rbKeperluanLLNFocusLost
+//        txtKeperluan.setEditable(false);
+//        txtKeperluan.setEditable(true);
+    }//GEN-LAST:event_rbKeperluanLLNFocusLost
+
+    private void rbKeperluanKKFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rbKeperluanKKFocusGained
+                txtKeperluan.setText("");
+        txtKeperluan.setEditable(false);
+    }//GEN-LAST:event_rbKeperluanKKFocusGained
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup JenisWNGroup;
     private javax.swing.JButton btnKembali;
@@ -502,6 +574,7 @@ public class DataKtpView extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
@@ -511,7 +584,12 @@ public class DataKtpView extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.ButtonGroup jenisKelaminGroup;
+    private javax.swing.ButtonGroup jenisKeperluanGroup;
+    private javax.swing.JRadioButton rbKeperluanKK;
+    private javax.swing.JRadioButton rbKeperluanKtp;
+    private javax.swing.JRadioButton rbKeperluanLLN;
     private javax.swing.JTextField txtKelamin;
+    private javax.swing.JTextField txtKeperluan;
     private javax.swing.JTextField txtNama;
     private javax.swing.JTextField txtNamaIbu;
     private javax.swing.JTextField txtNik;
@@ -521,54 +599,6 @@ public class DataKtpView extends javax.swing.JDialog {
     private com.toedter.calendar.JDateChooser txtTglPengajuan;
     // End of variables declaration//GEN-END:variables
 
-    private void refresDataKategoriAset() {
-//        try {
-//            txtKodeKategori.removeAllItems();
-//            daftarKategori = repoKategori.findAll();
-//            for (KategoriAset ka : daftarKategori) {
-//                txtKodeKategori.addItem(ka.getNama_kategori());
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(DataKtpView.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-    }
-
-    private void refresDataStatus() {
-//        try {
-//            txtStatus.removeAllItems();
-//            daftarStatus = repoStatus.findAll();
-//            for (StatusAset ds : daftarStatus) {
-//                txtStatus.addItem(ds.getStatus());
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(DataKtpView.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-
-    }
-
-    private void refresDataCustomer() {
-//        try {
-//            txtKepemilikan.removeAllItems();
-//            daftarKepemilikan = repoKepemilikan.findAll();
-//            for (Kepemilikan ds : daftarKepemilikan) {
-//                txtKepemilikan.addItem(ds.getNama());
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(DataKtpView.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-    }
-
-    private void refresDataLokasi() {
-//        try {
-//            txtLokasi.removeAllItems();
-//            daftarLokasi = repoLokasi.findAll();
-//            for (LokasiAset ds : daftarLokasi) {
-//                txtLokasi.addItem(ds.getNama_rak());
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(DataKtpView.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-    }
 
     private void setFields(Penduduk p) {
         txtNama.setText(p.getNama());
@@ -598,10 +628,10 @@ public class DataKtpView extends javax.swing.JDialog {
 //            }
 //        } catch (SQLException ex) {
 //            JOptionPane.showMessageDialog(this, "Tidak dapat mendapatkan kode!", getTitle(), JOptionPane.ERROR_MESSAGE);
-//            Logger.getLogger(DataKtpView.class.getName()).log(Level.SEVERE, null, ex);
+//            Logger.getLogger(DataSpView.class.getName()).log(Level.SEVERE, null, ex);
 //        }
 //    }
-    private void setFieldsKtp(Ktp ktp) {
+    private void setFieldsKtp(SuratPengantar ktp) {
         txtNoSp.setText(ktp.getNo_sp());
         txtNik.setText(ktp.getPenduduk().getNik());
     }
