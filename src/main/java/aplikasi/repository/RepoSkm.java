@@ -5,8 +5,7 @@
  */
 package aplikasi.repository;
 
-import aplikasi.entity.SuratPengantar;
-import aplikasi.entity.Penduduk;
+import aplikasi.entity.SuratKematian;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -14,17 +13,17 @@ import java.util.List;
  *
  * @author dhiskar
  */
-public interface RepoSkm extends BaseRepository<SuratPengantar, String> {
+public interface RepoSkm extends BaseRepository<SuratKematian , String> {
 
-    public List<SuratPengantar> findByKategoriKode(String kode) throws SQLException;
+    public List<SuratKematian> findByKategoriKode(String kode) throws SQLException;
     
-    public List<SuratPengantar> findByNama(String nama) throws SQLException;
+    public List<SuratKematian> findByNama(String nama) throws SQLException;
 
-    public List<SuratPengantar> findByQtyZeroByName(String nama) throws SQLException;
+    public List<SuratKematian> findByQtyZeroByName(String nama) throws SQLException;
 
-    public List<SuratPengantar> findByQtyOneByName(String nama) throws SQLException;
+    public List<SuratKematian> findByQtyOneByName(String nama) throws SQLException;
 
-    public List<SuratPengantar> findFilterAlll(String text, String toString, String toString0, String text0, String toString1, String toString2, String toString3, String toString4) throws SQLException;
+    public List<SuratKematian> findFilterAlll(String text, String toString, String toString0, String text0, String toString1, String toString2, String toString3, String toString4) throws SQLException;
 
 
 }

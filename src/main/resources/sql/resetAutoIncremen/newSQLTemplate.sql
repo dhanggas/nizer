@@ -1,1 +1,0 @@
-ALTER TABLE tb_customer AUTO_INCREMENT = 1
