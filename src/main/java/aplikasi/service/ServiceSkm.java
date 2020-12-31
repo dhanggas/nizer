@@ -7,9 +7,9 @@ package aplikasi.service;
 
 import aplikasi.entity.Penduduk;
 import aplikasi.entity.SuratKematian;
-import aplikasi.entity.SuratPengantar;
 import aplikasi.repository.RepoSkm;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -183,5 +183,54 @@ public class ServiceSkm implements RepoSkm{
     @Override
     public List<SuratKematian> findMaxValue() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<SuratKematian> findSpByTglBetween(Date awal, Date akhir) throws SQLException {
+        String sql = "SELECT * from v_kematian WHERE  tgl_kematian between ? AND ? ";
+        List<SuratKematian> list = new ArrayList<>();
+
+        Connection connect = ds.getConnection();
+        PreparedStatement ps = connect.prepareStatement(sql);
+        ps.setDate(1, awal);
+        ps.setDate(2, akhir);
+        ResultSet rs = ps.executeQuery();
+        
+        while (rs.next()) {
+            SuratKematian a = new SuratKematian();
+            a.setNo_skm(rs.getString("no_skm"));
+            a.setTgl_kematian(rs.getDate("tgl_kematian"));
+            a.setTmp_kematian(rs.getString("tmp_kematian"));
+            a.setSebab(rs.getString("sebab"));
+            a.setVerifikasi(rs.getBoolean("verifikasi"));
+            
+             Penduduk p = new Penduduk();
+            p.setNik(rs.getString("nik"));
+            p.setNama(rs.getString("nama"));
+            p.setNama_ibu(rs.getString("nama_ibu"));
+            p.setNama_ayah(rs.getString("nama_ayah"));
+            p.setTmp_lahir(rs.getString("tmp_lahir"));
+            p.setTgl_lahir(rs.getDate("tgl_lahir"));
+            p.setKelamin(rs.getString("kelamin"));
+            p.setGol_darah(rs.getString("gol_darah"));
+            p.setAlamat(rs.getString("alamat"));
+            p.setRt(rs.getString("rt"));
+            p.setRw(rs.getString("rw"));
+            p.setKecamatan(rs.getString("kelurahan"));
+            p.setKelurahan(rs.getString("kecamatan"));
+            p.setAgama(rs.getString("agama"));
+            p.setPendidikan(rs.getString("pendidikan"));
+            p.setSts_kawin(rs.getString("sts_kawin"));
+            p.setPekerjaan(rs.getString("pekerjaan"));
+            p.setKewarganegaraan(rs.getString("kewarganegaraan"));
+            
+            a.setPenduduk(p);
+            list.add(a);
+        }
+
+        ps.close();
+        rs.close();
+        connect.close();
+        return list;
     }
 }

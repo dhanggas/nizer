@@ -194,7 +194,7 @@ public class DataSkmView extends javax.swing.JDialog {
 
         jLabel5.setText("Nik");
 
-        txtNik.setToolTipText("Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter");
+        txtNik.setToolTipText("");
         txtNik.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNikKeyPressed(evt);
@@ -205,7 +205,7 @@ public class DataSkmView extends javax.swing.JDialog {
         });
 
         txtNama.setEditable(false);
-        txtNama.setToolTipText("Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter");
+        txtNama.setToolTipText("");
         txtNama.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNamaKeyReleased(evt);
@@ -213,7 +213,7 @@ public class DataSkmView extends javax.swing.JDialog {
         });
 
         txtTempatLahir.setEditable(false);
-        txtTempatLahir.setToolTipText("Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter");
+        txtTempatLahir.setToolTipText("");
         txtTempatLahir.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTempatLahirKeyReleased(evt);
@@ -221,7 +221,7 @@ public class DataSkmView extends javax.swing.JDialog {
         });
 
         txtTglLahir.setEditable(false);
-        txtTglLahir.setToolTipText("Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter");
+        txtTglLahir.setToolTipText("");
         txtTglLahir.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTglLahirKeyReleased(evt);
@@ -229,7 +229,7 @@ public class DataSkmView extends javax.swing.JDialog {
         });
 
         txtKelamin.setEditable(false);
-        txtKelamin.setToolTipText("Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter");
+        txtKelamin.setToolTipText("");
         txtKelamin.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtKelaminKeyReleased(evt);
@@ -237,7 +237,7 @@ public class DataSkmView extends javax.swing.JDialog {
         });
 
         txtNamaIbu.setEditable(false);
-        txtNamaIbu.setToolTipText("Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter");
+        txtNamaIbu.setToolTipText("");
         txtNamaIbu.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNamaIbuKeyReleased(evt);
@@ -302,7 +302,7 @@ public class DataSkmView extends javax.swing.JDialog {
 
         jLabel3.setText("Tanggal Kematian");
 
-        txtNoSkm.setToolTipText("Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter");
+        txtNoSkm.setToolTipText("");
         txtNoSkm.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNoSkmKeyReleased(evt);
@@ -311,7 +311,7 @@ public class DataSkmView extends javax.swing.JDialog {
 
         jLabel21.setText("Sebab Kematian");
 
-        txtSebab.setToolTipText("Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter");
+        txtSebab.setToolTipText("");
         txtSebab.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtSebabKeyPressed(evt);
@@ -321,7 +321,7 @@ public class DataSkmView extends javax.swing.JDialog {
             }
         });
 
-        txtTempatKematian.setToolTipText("Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter");
+        txtTempatKematian.setToolTipText("");
         txtTempatKematian.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTempatKematianKeyReleased(evt);

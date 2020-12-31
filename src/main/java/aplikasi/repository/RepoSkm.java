@@ -6,6 +6,7 @@
 package aplikasi.repository;
 
 import aplikasi.entity.SuratKematian;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -16,6 +17,8 @@ import java.util.List;
 public interface RepoSkm extends BaseRepository<SuratKematian , String> {
 
     public List<SuratKematian> findByKategoriKode(String kode) throws SQLException;
+    
+    public List<SuratKematian> findSpByTglBetween(Date awal, Date akhir) throws SQLException;
     
     public List<SuratKematian> findByNama(String nama) throws SQLException;
 

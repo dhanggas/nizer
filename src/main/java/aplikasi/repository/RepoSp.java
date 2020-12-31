@@ -6,7 +6,7 @@
 package aplikasi.repository;
 
 import aplikasi.entity.SuratPengantar;
-import aplikasi.entity.Penduduk;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -17,6 +17,8 @@ import java.util.List;
 public interface RepoSp extends BaseRepository<SuratPengantar, String> {
 
     public List<SuratPengantar> findByKategoriKode(String kode) throws SQLException;
+    
+    public List<SuratPengantar> findSpByTglBetween(Date awal, Date akhir) throws SQLException;
     
     public List<SuratPengantar> findByNama(String nama) throws SQLException;
 

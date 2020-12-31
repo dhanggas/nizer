@@ -193,7 +193,7 @@ public class DataPendudukView extends javax.swing.JDialog {
 
         jLabel2.setText("Nama");
 
-        txtNama.setToolTipText("Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter");
+        txtNama.setToolTipText("");
         txtNama.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNamaKeyReleased(evt);
@@ -228,42 +228,42 @@ public class DataPendudukView extends javax.swing.JDialog {
 
         jLabel5.setText("Nama Ibu");
 
-        txtNamaIbu.setToolTipText("Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter");
+        txtNamaIbu.setToolTipText("");
         txtNamaIbu.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNamaIbuKeyReleased(evt);
             }
         });
 
-        txtNamaAyah.setToolTipText("Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter");
+        txtNamaAyah.setToolTipText("");
         txtNamaAyah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNamaAyahKeyReleased(evt);
             }
         });
 
-        txtGolDarah.setToolTipText("Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter");
+        txtGolDarah.setToolTipText("");
         txtGolDarah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtGolDarahKeyReleased(evt);
             }
         });
 
-        txtAlamat.setToolTipText("Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter");
+        txtAlamat.setToolTipText("");
         txtAlamat.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtAlamatKeyReleased(evt);
             }
         });
 
-        txtRw.setToolTipText("Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter");
+        txtRw.setToolTipText("");
         txtRw.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtRwKeyReleased(evt);
             }
         });
 
-        txtRt.setToolTipText("Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter");
+        txtRt.setToolTipText("");
         txtRt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtRtKeyReleased(evt);
@@ -272,14 +272,14 @@ public class DataPendudukView extends javax.swing.JDialog {
 
         jLabel6.setText("Kelurahan");
 
-        txtKelurahan.setToolTipText("Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter");
+        txtKelurahan.setToolTipText("");
         txtKelurahan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtKelurahanKeyReleased(evt);
             }
         });
 
-        txtKecamatan.setToolTipText("Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter");
+        txtKecamatan.setToolTipText("");
         txtKecamatan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtKecamatanKeyReleased(evt);
@@ -290,14 +290,14 @@ public class DataPendudukView extends javax.swing.JDialog {
 
         jLabel13.setText("Agama");
 
-        txtAgama.setToolTipText("Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter");
+        txtAgama.setToolTipText("");
         txtAgama.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtAgamaKeyReleased(evt);
             }
         });
 
-        txtPendidikan.setToolTipText("Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter");
+        txtPendidikan.setToolTipText("");
         txtPendidikan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtPendidikanKeyReleased(evt);
@@ -308,14 +308,14 @@ public class DataPendudukView extends javax.swing.JDialog {
 
         jLabel15.setText("Status Perkawinan");
 
-        txtStsKawin.setToolTipText("Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter");
+        txtStsKawin.setToolTipText("");
         txtStsKawin.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtStsKawinKeyReleased(evt);
             }
         });
 
-        txtPekerjaan.setToolTipText("Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter");
+        txtPekerjaan.setToolTipText("");
         txtPekerjaan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtPekerjaanKeyReleased(evt);
@@ -476,14 +476,14 @@ public class DataPendudukView extends javax.swing.JDialog {
 
         jLabel4.setText("Tempat Lahir");
 
-        txtTmpLahir.setToolTipText("Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter");
+        txtTmpLahir.setToolTipText("");
         txtTmpLahir.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTmpLahirKeyReleased(evt);
             }
         });
 
-        txtNik.setToolTipText("Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter");
+        txtNik.setToolTipText("");
         txtNik.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNikKeyReleased(evt);
@@ -515,13 +515,11 @@ public class DataPendudukView extends javax.swing.JDialog {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtNik)
-                        .addGap(3, 3, 3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNik, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtNama, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
@@ -529,7 +527,7 @@ public class DataPendudukView extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTmpLahir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtTglLahir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))

@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.sql.DataSource;
 import aplikasi.repository.RepoSp;
+import java.sql.Date;
 
 /**
  *
@@ -221,6 +222,54 @@ public class ServiceSp implements RepoSp {
         connect.close();
         return a;
     }
+
+    @Override
+    public List<SuratPengantar> findSpByTglBetween(Date awal, Date akhir) throws SQLException {
+        String sql = "SELECT * from v_ktp WHERE  tgl between ? AND ? ";
+        List<SuratPengantar> list = new ArrayList<>();
+
+        Connection connect = ds.getConnection();
+        PreparedStatement ps = connect.prepareStatement(sql);
+        ps.setDate(1, awal);
+        ps.setDate(2, akhir);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+           SuratPengantar a = new SuratPengantar();
+            a.setNo_sp(rs.getString("no_sp"));
+            a.setTgl(rs.getDate("tgl"));
+            a.setVerifikasi(rs.getBoolean("verifikasi"));
+            a.setKeperluan(rs.getString("keperluan"));
+            
+            Penduduk p = new Penduduk();
+            p.setNik(rs.getString("nik"));
+            p.setNama(rs.getString("nama"));
+            p.setNama_ibu(rs.getString("nama_ibu"));
+            p.setNama_ayah(rs.getString("nama_ayah"));
+            p.setTmp_lahir(rs.getString("tmp_lahir"));
+            p.setTgl_lahir(rs.getDate("tgl_lahir"));
+            p.setKelamin(rs.getString("kelamin"));
+            p.setGol_darah(rs.getString("gol_darah"));
+            p.setAlamat(rs.getString("alamat"));
+            p.setRt(rs.getString("rt"));
+            p.setRw(rs.getString("rw"));
+            p.setKecamatan(rs.getString("kelurahan"));
+            p.setKelurahan(rs.getString("kecamatan"));
+            p.setAgama(rs.getString("agama"));
+            p.setPendidikan(rs.getString("pendidikan"));
+            p.setSts_kawin(rs.getString("sts_kawin"));
+            p.setPekerjaan(rs.getString("pekerjaan"));
+            p.setKewarganegaraan(rs.getString("kewarganegaraan"));
+            
+            a.setPenduduk(p);
+            list.add(a);
+        }
+
+        ps.close();
+        rs.close();
+        connect.close();
+        return list;
+    }
+
 
     
 }

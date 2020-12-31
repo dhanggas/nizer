@@ -121,7 +121,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="mniLapSuratPengantar">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Surat Pengantar"/>
+                <Property name="text" type="java.lang.String" value="Surat Pengantar (KTP / KK / Pindah)"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
@@ -129,8 +129,6 @@
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator8">
-            </MenuItem>
-            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator10">
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mniLapSKM">
               <Properties>

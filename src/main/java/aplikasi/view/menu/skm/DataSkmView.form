@@ -294,7 +294,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtNik">
               <Properties>
-                <Property name="toolTipText" type="java.lang.String" value="Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Events>
                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNikKeyPressed"/>
@@ -304,7 +304,7 @@
             <Component class="javax.swing.JTextField" name="txtNama">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
-                <Property name="toolTipText" type="java.lang.String" value="Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Events>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNamaKeyReleased"/>
@@ -313,7 +313,7 @@
             <Component class="javax.swing.JTextField" name="txtTempatLahir">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
-                <Property name="toolTipText" type="java.lang.String" value="Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Events>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTempatLahirKeyReleased"/>
@@ -322,7 +322,7 @@
             <Component class="javax.swing.JTextField" name="txtTglLahir">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
-                <Property name="toolTipText" type="java.lang.String" value="Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Events>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTglLahirKeyReleased"/>
@@ -331,7 +331,7 @@
             <Component class="javax.swing.JTextField" name="txtKelamin">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
-                <Property name="toolTipText" type="java.lang.String" value="Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Events>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtKelaminKeyReleased"/>
@@ -340,7 +340,7 @@
             <Component class="javax.swing.JTextField" name="txtNamaIbu">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
-                <Property name="toolTipText" type="java.lang.String" value="Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Events>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNamaIbuKeyReleased"/>
@@ -357,7 +357,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtNoSkm">
           <Properties>
-            <Property name="toolTipText" type="java.lang.String" value="Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNoSkmKeyReleased"/>
@@ -370,7 +370,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtSebab">
           <Properties>
-            <Property name="toolTipText" type="java.lang.String" value="Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSebabKeyPressed"/>
@@ -379,7 +379,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtTempatKematian">
           <Properties>
-            <Property name="toolTipText" type="java.lang.String" value="Isi dengan nama aset  minimal 4 karakter dan maximal 50 karakter"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTempatKematianKeyReleased"/>

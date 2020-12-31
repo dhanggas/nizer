@@ -6,6 +6,8 @@
 package aplikasi.view;
 
 import aplikasi.entity.Users;
+import aplikasi.view.menu.laporan.LaporanSkm;
+import aplikasi.view.menu.laporan.LaporanSuratPengantar;
 import aplikasi.view.menu.user.DaftarUserView;
 import aplikasi.view.menu.sp.DaftarSpView;
 import aplikasi.view.menu.penduduk.DaftarPendudukView;
@@ -108,7 +110,6 @@ public class MainMenuView extends javax.swing.JFrame {
         mnuLaporan = new javax.swing.JMenu();
         mniLapSuratPengantar = new javax.swing.JMenuItem();
         jSeparator8 = new javax.swing.JPopupMenu.Separator();
-        jSeparator10 = new javax.swing.JPopupMenu.Separator();
         mniLapSKM = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         mniTentangAplikasi = new javax.swing.JMenuItem();
@@ -321,7 +322,7 @@ public class MainMenuView extends javax.swing.JFrame {
             }
         });
 
-        mniLapSuratPengantar.setText("Surat Pengantar");
+        mniLapSuratPengantar.setText("Surat Pengantar (KTP / KK / Pindah)");
         mniLapSuratPengantar.setEnabled(false);
         mniLapSuratPengantar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -330,7 +331,6 @@ public class MainMenuView extends javax.swing.JFrame {
         });
         mnuLaporan.add(mniLapSuratPengantar);
         mnuLaporan.add(jSeparator8);
-        mnuLaporan.add(jSeparator10);
 
         mniLapSKM.setText("Surat Kematian");
         mniLapSKM.setEnabled(false);
@@ -437,16 +437,21 @@ public class MainMenuView extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuLaporanActionPerformed
 
     private void mniLapSuratPengantarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLapSuratPengantarActionPerformed
-//        try {
-//            LaporanAset view = new LaporanAset(this, p);
-//            setInnerLayout(view);
-//        } catch (Exception ex) {
-//            Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        try {
+            LaporanSuratPengantar view = new LaporanSuratPengantar(this, p);
+            setInnerLayout(view);
+        } catch (Exception ex) {
+            Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_mniLapSuratPengantarActionPerformed
 
     private void mniLapSKMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLapSKMActionPerformed
-        // TODO add your handling code here:
+        try {
+            LaporanSkm view = new LaporanSkm(this, p);
+            setInnerLayout(view);
+        } catch (Exception ex) {
+            Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_mniLapSKMActionPerformed
 
     private void mniSKMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniSKMActionPerformed
@@ -505,7 +510,6 @@ public class MainMenuView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JToolBar.Separator jSeparator1;
-    private javax.swing.JPopupMenu.Separator jSeparator10;
     private javax.swing.JPopupMenu.Separator jSeparator11;
     private javax.swing.JToolBar.Separator jSeparator12;
     private javax.swing.JToolBar.Separator jSeparator2;
