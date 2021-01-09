@@ -126,7 +126,7 @@
         <Component class="javax.swing.JButton" name="btnHapus">
           <Properties>
             <Property name="text" type="java.lang.String" value="Hapus"/>
-            <Property name="toolTipText" type="java.lang.String" value="Tambah data baru"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -190,7 +190,7 @@
       <SubComponents>
         <Component class="javax.swing.JTextField" name="txtCari">
           <Properties>
-            <Property name="toolTipText" type="java.lang.String" value="Pencarian berdasarkan nama aset"/>
+            <Property name="toolTipText" type="java.lang.String" value="Pencarian berdasarkan nama"/>
           </Properties>
           <Events>
             <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="txtCariCaretUpdate"/>

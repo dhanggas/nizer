@@ -231,7 +231,7 @@ public class DaftarSkmView extends javax.swing.JInternalFrame {
         jToolBar1.add(btnUbah);
 
         btnHapus.setText("Hapus");
-        btnHapus.setToolTipText("Tambah data baru");
+        btnHapus.setToolTipText("");
         btnHapus.setFocusable(false);
         btnHapus.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnHapus.setMaximumSize(new java.awt.Dimension(120, 35));
@@ -251,7 +251,7 @@ public class DaftarSkmView extends javax.swing.JInternalFrame {
         jToolBar1.add(btnHapus);
 
         btnCetak.setText("Cetak");
-        btnCetak.setToolTipText("Tambah data baru");
+        btnCetak.setToolTipText("");
         btnCetak.setFocusable(false);
         btnCetak.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnCetak.setMaximumSize(new java.awt.Dimension(120, 35));
@@ -403,7 +403,7 @@ public class DaftarSkmView extends javax.swing.JInternalFrame {
         jLabel20.setText("No SKM");
 
         btnVerifikasi.setText("Verifikasi");
-        btnVerifikasi.setToolTipText("Tambah data baru");
+        btnVerifikasi.setToolTipText("");
         btnVerifikasi.setFocusable(false);
         btnVerifikasi.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnVerifikasi.setMaximumSize(new java.awt.Dimension(120, 35));
@@ -621,7 +621,7 @@ public class DaftarSkmView extends javax.swing.JInternalFrame {
                     Logger.getLogger(DaftarSkmView.class.getName()).log(Level.SEVERE, null, e);
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Data Aset belum dipilih!", getTitle(), JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Data belum dipilih!", getTitle(), JOptionPane.WARNING_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnHapusActionPerformed

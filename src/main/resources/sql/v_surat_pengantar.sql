@@ -1,4 +1,4 @@
-CREATE VIEW v_ktp AS SELECT
+CREATE VIEW v_surat_pengantar AS SELECT
     tb_ktp.no_sp AS 'no_sp',
     tb_ktp.tgl AS 'tgl',
     tb_ktp.verifikasi AS 'verifikasi',

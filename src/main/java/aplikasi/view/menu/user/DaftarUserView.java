@@ -179,7 +179,7 @@ public class DaftarUserView extends javax.swing.JInternalFrame {
         jToolBar1.add(btnTambah);
 
         btnHapus.setText("Hapus");
-        btnHapus.setToolTipText("Tambah data user baru");
+        btnHapus.setToolTipText("");
         btnHapus.setFocusable(false);
         btnHapus.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnHapus.setMaximumSize(new java.awt.Dimension(120, 35));

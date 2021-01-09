@@ -52,7 +52,7 @@ public class DataSpView extends javax.swing.JDialog {
     }
 
     /**
-     * Creates new form DataAsetView
+     * Creates new form DataView
      */
     public DataSpView(java.awt.Frame parent, boolean modal, Users p) {
         super(parent, modal);
@@ -65,7 +65,7 @@ public class DataSpView extends javax.swing.JDialog {
         this.jTextFieldMinimal = new FieldMinimal();
         this.txtTglPengajuan.setDate(new java.util.Date());
         txtNama.requestFocus();
-//        ambilKodeAset();
+//        ambilKode();
         textFieldLimit();
     }
 
@@ -608,7 +608,7 @@ public class DataSpView extends javax.swing.JDialog {
         txtKelamin.setText(p.getRt());
     }
 
-//    private void ambilKodeAset() {
+//    private void ambilKode() {
 //        try {
 //            String s = null;
 //            StringBuilder sb = new StringBuilder("MD").append("-");

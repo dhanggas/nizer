@@ -38,7 +38,7 @@ public class ServiceSp implements RepoSp {
     @Override
     public List<SuratPengantar> findByNama(String nama) throws SQLException {
         List<SuratPengantar> list = new ArrayList<>();
-        String sql = "SELECT * FROM v_ktp \n"
+        String sql = "SELECT * FROM v_surat_pengantar \n"
                 + "WHERE no_sp like CONCAT('%', ?, '%') ";
 
         Connection connect = ds.getConnection();
@@ -101,7 +101,7 @@ public class ServiceSp implements RepoSp {
 
     @Override
     public SuratPengantar save(SuratPengantar value) throws SQLException {
-        String sql = "INSERT INTO tb_ktp (no_sp, tgl, nik, keperluan) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO tb_surat_pengantar (no_sp, tgl, nik, keperluan) VALUES (?,?,?,?)";
 
         Connection connect = ds.getConnection();
         PreparedStatement ps = connect.prepareStatement(sql);
@@ -119,7 +119,7 @@ public class ServiceSp implements RepoSp {
 
     @Override
     public SuratPengantar update(SuratPengantar a) throws SQLException {
-        String sql = "UPDATE tb_ktp SET tgl = ?, nik = ?, keperluan = ? WHERE no_sp = ?";
+        String sql = "UPDATE tb_surat_pengantar SET tgl = ?, nik = ?, keperluan = ? WHERE no_sp = ?";
 
         Connection connect = ds.getConnection();
         PreparedStatement ps = connect.prepareStatement(sql);
@@ -136,7 +136,7 @@ public class ServiceSp implements RepoSp {
 
     @Override
     public List<SuratPengantar> findAll() throws SQLException {
-        String sql = "SELECT * FROM v_ktp";
+        String sql = "SELECT * FROM v_surat_pengantar";
         List<SuratPengantar> list = new ArrayList<>();
 
         Connection connect = ds.getConnection();
@@ -192,7 +192,7 @@ public class ServiceSp implements RepoSp {
 
     @Override
     public void delete(String id) throws SQLException {
-        String sql = "DELETE FROM tb_ktp WHERE no_sp = ?";
+        String sql = "DELETE FROM tb_surat_pengantar WHERE no_sp = ?";
 
         Connection connect = ds.getConnection();
         PreparedStatement ps = connect.prepareStatement(sql);
@@ -210,7 +210,7 @@ public class ServiceSp implements RepoSp {
 
     @Override
     public SuratPengantar verifikasi(SuratPengantar a) throws SQLException {
-        String sql = "UPDATE tb_ktp SET verifikasi = ? WHERE no_sp = ?";
+        String sql = "UPDATE tb_surat_pengantar SET verifikasi = ? WHERE no_sp = ?";
 
         Connection connect = ds.getConnection();
         PreparedStatement ps = connect.prepareStatement(sql);
@@ -225,7 +225,7 @@ public class ServiceSp implements RepoSp {
 
     @Override
     public List<SuratPengantar> findSpByTglBetween(Date awal, Date akhir) throws SQLException {
-        String sql = "SELECT * from v_ktp WHERE  tgl between ? AND ? ";
+        String sql = "SELECT * from v_surat_pengantar WHERE  tgl between ? AND ? ";
         List<SuratPengantar> list = new ArrayList<>();
 
         Connection connect = ds.getConnection();

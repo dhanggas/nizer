@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 30, 2020 at 03:22 PM
+-- Generation Time: Jan 09, 2021 at 03:29 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -42,32 +42,9 @@ CREATE TABLE `tb_kematian` (
 --
 
 INSERT INTO `tb_kematian` (`no_skm`, `tgl_kematian`, `tmp_kematian`, `sebab`, `nik`, `verifikasi`) VALUES
-('201227/SKM/001', '2020-12-20', 'TANGERANG', 'SAKIT', '1234567812345678', 1),
+('201227/SKM/001', '2020-12-20', 'TANGERANG', 'SAKIT banget', '1234567812345678', 1),
 ('201227/SKM/002', '2020-12-24', 'BLORA', 'KECELAKAAN', '1234567812345679', 1),
 ('201230/skm/001', '2020-12-30', 'Tangerang Selatan', 'sakit banget banget', '1234567812345680', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tb_ktp`
---
-
-CREATE TABLE `tb_ktp` (
-  `no_sp` varchar(20) NOT NULL,
-  `tgl` date NOT NULL,
-  `nik` varchar(16) NOT NULL,
-  `keperluan` varchar(200) NOT NULL,
-  `verifikasi` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tb_ktp`
---
-
-INSERT INTO `tb_ktp` (`no_sp`, `tgl`, `nik`, `keperluan`, `verifikasi`) VALUES
-('201221/SP/001', '2020-12-27', '1234567812345678', 'Pengurusan KTP', 1),
-('201221/SP/002', '2020-12-27', '1234567812345679', 'Pengurusan Kartu Keluarga', 0),
-('201227/SP/003', '2020-12-27', '1234567812345680', 'Pindah Alamat Tinggal', 0);
 
 -- --------------------------------------------------------
 
@@ -108,6 +85,29 @@ INSERT INTO `tb_penduduk` (`nik`, `nama`, `nama_ibu`, `nama_ayah`, `tmp_lahir`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tb_surat_pengantar`
+--
+
+CREATE TABLE `tb_surat_pengantar` (
+  `no_sp` varchar(20) NOT NULL,
+  `tgl` date NOT NULL,
+  `nik` varchar(16) NOT NULL,
+  `keperluan` varchar(200) NOT NULL,
+  `verifikasi` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_surat_pengantar`
+--
+
+INSERT INTO `tb_surat_pengantar` (`no_sp`, `tgl`, `nik`, `keperluan`, `verifikasi`) VALUES
+('201221/SP/001', '2020-12-31', '1234567812345678', 'Pengurusan Kartu Keluarga', 1),
+('201221/SP/002', '2020-12-27', '1234567812345679', 'Pengurusan Kartu Keluarga', 0),
+('201227/SP/003', '2021-01-09', '1234567812345680', 'Pengurusan Kartu Keluarga', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tb_user`
 --
 
@@ -125,17 +125,8 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `nama`, `username`, `password`, `jabatan`, `status`) VALUES
-(1, 'Dhiskar', 'dhiskar', 'Kepala1', 'Kepala', 1),
+(1, 'Nizer', 'nizer', 'Kepala1', 'Kepala', 1),
 (2, 'Panji', 'panji', 'Admin1', 'Admin', 1);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `v_kelahiran`
--- (See below for the actual view)
---
-CREATE TABLE `v_kelahiran` (
-);
 
 -- --------------------------------------------------------
 
@@ -172,10 +163,10 @@ CREATE TABLE `v_kematian` (
 -- --------------------------------------------------------
 
 --
--- Stand-in structure for view `v_ktp`
+-- Stand-in structure for view `v_surat_pengantar`
 -- (See below for the actual view)
 --
-CREATE TABLE `v_ktp` (
+CREATE TABLE `v_surat_pengantar` (
 `no_sp` varchar(20)
 ,`tgl` date
 ,`verifikasi` tinyint(1)
@@ -203,15 +194,6 @@ CREATE TABLE `v_ktp` (
 -- --------------------------------------------------------
 
 --
--- Structure for view `v_kelahiran`
---
-DROP TABLE IF EXISTS `v_kelahiran`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_kelahiran`  AS  select `tb_kelahiran`.`no_skl` AS `no_skl`,`tb_kelahiran`.`nama` AS `nama`,`tb_kelahiran`.`tgl_lahir` AS `tgl_lahir`,`tb_kelahiran`.`tmp_lahir` AS `tmp_lahir`,`tb_kelahiran`.`kelamin` AS `kelamin`,`tb_kelahiran`.`verifikasi` AS `verifikasi`,`tb_penduduk`.`nik` AS `nik`,`tb_penduduk`.`nama` AS `nama_ibu` from (`tb_kelahiran` left join `tb_penduduk` on((`tb_kelahiran`.`nik_ayah` = `tb_penduduk`.`nik`))) ;
-
--- --------------------------------------------------------
-
---
 -- Structure for view `v_kematian`
 --
 DROP TABLE IF EXISTS `v_kematian`;
@@ -221,11 +203,11 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Structure for view `v_ktp`
+-- Structure for view `v_surat_pengantar`
 --
-DROP TABLE IF EXISTS `v_ktp`;
+DROP TABLE IF EXISTS `v_surat_pengantar`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_ktp`  AS  select `tb_ktp`.`no_sp` AS `no_sp`,`tb_ktp`.`tgl` AS `tgl`,`tb_ktp`.`verifikasi` AS `verifikasi`,`tb_ktp`.`keperluan` AS `keperluan`,`tb_penduduk`.`nik` AS `nik`,`tb_penduduk`.`nama` AS `nama`,`tb_penduduk`.`nama_ibu` AS `nama_ibu`,`tb_penduduk`.`nama_ayah` AS `nama_ayah`,`tb_penduduk`.`tmp_lahir` AS `tmp_lahir`,`tb_penduduk`.`tgl_lahir` AS `tgl_lahir`,`tb_penduduk`.`kelamin` AS `kelamin`,`tb_penduduk`.`gol_darah` AS `gol_darah`,`tb_penduduk`.`alamat` AS `alamat`,`tb_penduduk`.`rt` AS `rt`,`tb_penduduk`.`rw` AS `rw`,`tb_penduduk`.`kelurahan` AS `kelurahan`,`tb_penduduk`.`kecamatan` AS `kecamatan`,`tb_penduduk`.`agama` AS `agama`,`tb_penduduk`.`pendidikan` AS `pendidikan`,`tb_penduduk`.`sts_kawin` AS `sts_kawin`,`tb_penduduk`.`pekerjaan` AS `pekerjaan`,`tb_penduduk`.`kewarganegaraan` AS `kewarganegaraan` from (`tb_ktp` left join `tb_penduduk` on((`tb_ktp`.`nik` = `tb_penduduk`.`nik`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_surat_pengantar`  AS  select `tb_surat_pengantar`.`no_sp` AS `no_sp`,`tb_surat_pengantar`.`tgl` AS `tgl`,`tb_surat_pengantar`.`verifikasi` AS `verifikasi`,`tb_surat_pengantar`.`keperluan` AS `keperluan`,`tb_penduduk`.`nik` AS `nik`,`tb_penduduk`.`nama` AS `nama`,`tb_penduduk`.`nama_ibu` AS `nama_ibu`,`tb_penduduk`.`nama_ayah` AS `nama_ayah`,`tb_penduduk`.`tmp_lahir` AS `tmp_lahir`,`tb_penduduk`.`tgl_lahir` AS `tgl_lahir`,`tb_penduduk`.`kelamin` AS `kelamin`,`tb_penduduk`.`gol_darah` AS `gol_darah`,`tb_penduduk`.`alamat` AS `alamat`,`tb_penduduk`.`rt` AS `rt`,`tb_penduduk`.`rw` AS `rw`,`tb_penduduk`.`kelurahan` AS `kelurahan`,`tb_penduduk`.`kecamatan` AS `kecamatan`,`tb_penduduk`.`agama` AS `agama`,`tb_penduduk`.`pendidikan` AS `pendidikan`,`tb_penduduk`.`sts_kawin` AS `sts_kawin`,`tb_penduduk`.`pekerjaan` AS `pekerjaan`,`tb_penduduk`.`kewarganegaraan` AS `kewarganegaraan` from (`tb_surat_pengantar` left join `tb_penduduk` on((`tb_surat_pengantar`.`nik` = `tb_penduduk`.`nik`))) ;
 
 --
 -- Indexes for dumped tables
@@ -239,17 +221,17 @@ ALTER TABLE `tb_kematian`
   ADD UNIQUE KEY `fk_mati_penduduk` (`nik`) USING BTREE;
 
 --
--- Indexes for table `tb_ktp`
---
-ALTER TABLE `tb_ktp`
-  ADD PRIMARY KEY (`no_sp`),
-  ADD KEY `fk_ktp_nik` (`nik`) USING BTREE;
-
---
 -- Indexes for table `tb_penduduk`
 --
 ALTER TABLE `tb_penduduk`
   ADD PRIMARY KEY (`nik`);
+
+--
+-- Indexes for table `tb_surat_pengantar`
+--
+ALTER TABLE `tb_surat_pengantar`
+  ADD PRIMARY KEY (`no_sp`),
+  ADD KEY `fk_ktp_nik` (`nik`) USING BTREE;
 
 --
 -- Indexes for table `tb_user`
@@ -269,10 +251,10 @@ ALTER TABLE `tb_kematian`
   ADD CONSTRAINT `tb_kematian_ibfk_1` FOREIGN KEY (`nik`) REFERENCES `tb_penduduk` (`nik`);
 
 --
--- Constraints for table `tb_ktp`
+-- Constraints for table `tb_surat_pengantar`
 --
-ALTER TABLE `tb_ktp`
-  ADD CONSTRAINT `tb_ktp_ibfk_1` FOREIGN KEY (`nik`) REFERENCES `tb_penduduk` (`nik`);
+ALTER TABLE `tb_surat_pengantar`
+  ADD CONSTRAINT `tb_surat_pengantar_ibfk_1` FOREIGN KEY (`nik`) REFERENCES `tb_penduduk` (`nik`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

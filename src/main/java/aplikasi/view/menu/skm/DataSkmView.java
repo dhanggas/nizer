@@ -50,7 +50,7 @@ public class DataSkmView extends javax.swing.JDialog {
     }
 
     /**
-     * Creates new form DataAsetView
+     * Creates new form DataView
      */
     public DataSkmView(java.awt.Frame parent, boolean modal, Users p) {
         super(parent, modal);
@@ -63,15 +63,15 @@ public class DataSkmView extends javax.swing.JDialog {
         this.jTextFieldMinimal = new FieldMinimal();
         this.txtTglKematian.setDate(new java.util.Date());
         txtNama.requestFocus();
-//        ambilKodeAset();
+//        ambilKode();
         textFieldLimit();
     }
 
-    DataSkmView(java.awt.Frame parent, DaftarSkmView daftarAsetController, boolean modal, Users p) {
+    DataSkmView(java.awt.Frame parent, DaftarSkmView daftarSkmtController, boolean modal, Users p) {
         super(parent, modal);
         initComponents();
         setUpdate(false);
-        this.daftarSkmController = daftarAsetController;
+        this.daftarSkmController = daftarSkmtController;
         this.penduduk = new Penduduk();
         this.suratKematian = new SuratKematian();
         this.p = p;
@@ -551,7 +551,7 @@ public class DataSkmView extends javax.swing.JDialog {
         txtKelamin.setText(p.getKelamin());
     }
 
-//    private void ambilKodeAset() {
+//    private void ambilKode() {
 //        try {
 //            String s = null;
 //            StringBuilder sb = new StringBuilder("MD").append("-");

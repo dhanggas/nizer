@@ -45,7 +45,7 @@ public class DataPendudukView extends javax.swing.JDialog {
     }
 
     /**
-     * Creates new form DataAsetView
+     * Creates new form DataView
      */
     public DataPendudukView(java.awt.Frame parent, boolean modal, Users p) {
         super(parent, modal);
@@ -57,19 +57,15 @@ public class DataPendudukView extends javax.swing.JDialog {
         this.jTextFieldMinimal = new FieldMinimal();
         this.txtTglLahir.setDate(new java.util.Date());
         txtNama.requestFocus();
-//        ambilKodeAset();
-        refresDataKategoriAset();
-        refresDataStatus();
-        refresDataLokasi();
-        refresDataCustomer();
+//        ambilKode();
         textFieldLimit();
     }
 
-    DataPendudukView(java.awt.Frame parent, DaftarPendudukView daftarAsetController, boolean modal, Users p) {
+    DataPendudukView(java.awt.Frame parent, DaftarPendudukView daftarPendudukController, boolean modal, Users p) {
         super(parent, modal);
         initComponents();
         setUpdate(false);
-        this.daftarPendudukController = daftarAsetController;
+        this.daftarPendudukController = daftarPendudukController;
         this.penduduk = new Penduduk();
         this.p = p;
         this.jTextFieldMinimal = new FieldMinimal();
@@ -728,55 +724,6 @@ public class DataPendudukView extends javax.swing.JDialog {
     private javax.swing.JTextField txtTmpLahir;
     // End of variables declaration//GEN-END:variables
 
-    private void refresDataKategoriAset() {
-//        try {
-//            txtKodeKategori.removeAllItems();
-//            daftarKategori = repoKategori.findAll();
-//            for (KategoriAset ka : daftarKategori) {
-//                txtKodeKategori.addItem(ka.getNama_kategori());
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(DataPendudukView.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-    }
-
-    private void refresDataStatus() {
-//        try {
-//            txtStatus.removeAllItems();
-//            daftarStatus = repoStatus.findAll();
-//            for (StatusAset ds : daftarStatus) {
-//                txtStatus.addItem(ds.getStatus());
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(DataPendudukView.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-
-    }
-
-    private void refresDataCustomer() {
-//        try {
-//            txtKepemilikan.removeAllItems();
-//            daftarKepemilikan = repoKepemilikan.findAll();
-//            for (Kepemilikan ds : daftarKepemilikan) {
-//                txtKepemilikan.addItem(ds.getNama());
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(DataPendudukView.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-    }
-
-    private void refresDataLokasi() {
-//        try {
-//            txtLokasi.removeAllItems();
-//            daftarLokasi = repoLokasi.findAll();
-//            for (LokasiAset ds : daftarLokasi) {
-//                txtLokasi.addItem(ds.getNama_rak());
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(DataPendudukView.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-    }
-
     private void setFields(Penduduk p) {
         txtNik.setText(penduduk.getNik());
         txtNama.setText(penduduk.getNama());
@@ -807,7 +754,7 @@ public class DataPendudukView extends javax.swing.JDialog {
         
     }
 
-//    private void ambilKodeAset() {
+//    private void ambilKode() {
 //        try {
 //            String s = null;
 //            StringBuilder sb = new StringBuilder("MD").append("-");

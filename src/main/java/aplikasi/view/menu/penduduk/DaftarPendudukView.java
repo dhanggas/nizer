@@ -213,7 +213,7 @@ public class DaftarPendudukView extends javax.swing.JInternalFrame {
         jToolBar1.add(btnUbah);
 
         btnHapus.setText("Hapus");
-        btnHapus.setToolTipText("Tambah data baru");
+        btnHapus.setToolTipText("");
         btnHapus.setFocusable(false);
         btnHapus.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnHapus.setMaximumSize(new java.awt.Dimension(120, 35));
@@ -236,7 +236,7 @@ public class DaftarPendudukView extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Daftar Penduduk"));
 
-        txtCari.setToolTipText("Pencarian berdasarkan nama aset");
+        txtCari.setToolTipText("Pencarian berdasarkan nama");
         txtCari.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 txtCariCaretUpdate(evt);
@@ -470,7 +470,7 @@ public class DaftarPendudukView extends javax.swing.JInternalFrame {
             view.setResizable(false);
             view.setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(this, "Data Aset belum dipilih!", getTitle(), JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Data belum dipilih!", getTitle(), JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnUbahActionPerformed
 
@@ -521,7 +521,7 @@ public class DaftarPendudukView extends javax.swing.JInternalFrame {
 //            view.setResizable(false);
 //            view.setVisible(true);
 //        } else {
-//            JOptionPane.showMessageDialog(this, "Data Aset belum dipilih!", getTitle(), JOptionPane.WARNING_MESSAGE);
+//            JOptionPane.showMessageDialog(this, "Data belum dipilih!", getTitle(), JOptionPane.WARNING_MESSAGE);
 //        }
     }//GEN-LAST:event_pmnuLihatTransaksiActionPerformed
 
@@ -558,7 +558,7 @@ public class DaftarPendudukView extends javax.swing.JInternalFrame {
             } catch (Exception e) {
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Data Aset belum dipilih!", getTitle(), JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Data belum dipilih!", getTitle(), JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnHapusActionPerformed
 

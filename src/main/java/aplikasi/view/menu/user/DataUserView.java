@@ -145,9 +145,9 @@ public class DataUserView extends javax.swing.JDialog {
         txtPassword = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtJabatan = new javax.swing.JComboBox<String>();
+        txtJabatan = new javax.swing.JComboBox<>();
         cboHidePassword = new javax.swing.JCheckBox();
-        txtStatus = new javax.swing.JComboBox<String>();
+        txtStatus = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -227,7 +227,7 @@ public class DataUserView extends javax.swing.JDialog {
 
         jLabel5.setText("Jabatan");
 
-        txtJabatan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Admin", "Gudang", "Kasir", "Kepala" }));
+        txtJabatan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Kepala" }));
 
         cboHidePassword.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         cboHidePassword.setText("Show password");
@@ -238,7 +238,7 @@ public class DataUserView extends javax.swing.JDialog {
             }
         });
 
-        txtStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Aktif", "Tidak Aktif" }));
+        txtStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aktif", "Tidak Aktif" }));
 
         jLabel6.setText("Status");
 

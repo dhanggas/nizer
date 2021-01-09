@@ -47,7 +47,7 @@ public class DaftarSpView extends javax.swing.JInternalFrame {
     private SuratPengantar ktp = null;
 
     /**
-     * Creates new form DaftarAsetView
+     * Creates new form DaftarView
      *
      * @param menuController
      */
@@ -230,7 +230,7 @@ public class DaftarSpView extends javax.swing.JInternalFrame {
         jToolBar1.add(btnUbah);
 
         btnHapus.setText("Hapus");
-        btnHapus.setToolTipText("Tambah data baru");
+        btnHapus.setToolTipText("");
         btnHapus.setFocusable(false);
         btnHapus.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnHapus.setMaximumSize(new java.awt.Dimension(120, 35));
@@ -250,7 +250,7 @@ public class DaftarSpView extends javax.swing.JInternalFrame {
         jToolBar1.add(btnHapus);
 
         btnCetak.setText("Cetak");
-        btnCetak.setToolTipText("Tambah data baru");
+        btnCetak.setToolTipText("");
         btnCetak.setFocusable(false);
         btnCetak.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnCetak.setMaximumSize(new java.awt.Dimension(120, 35));
@@ -273,7 +273,7 @@ public class DaftarSpView extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("List Data"));
 
-        txtCari.setToolTipText("Pencarian berdasarkan nama aset");
+        txtCari.setToolTipText("Pencarian berdasarkan nomor surat pengantar");
         txtCari.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 txtCariCaretUpdate(evt);
@@ -402,7 +402,7 @@ public class DaftarSpView extends javax.swing.JInternalFrame {
         jLabel20.setText("No SP");
 
         btnVerifikasi.setText("Verifikasi");
-        btnVerifikasi.setToolTipText("Tambah data baru");
+        btnVerifikasi.setToolTipText("");
         btnVerifikasi.setFocusable(false);
         btnVerifikasi.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnVerifikasi.setMaximumSize(new java.awt.Dimension(120, 35));
@@ -570,14 +570,14 @@ public class DaftarSpView extends javax.swing.JInternalFrame {
 
     private void pmnuLihatTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pmnuLihatTransaksiActionPerformed
 //        if (tableController.isSelected()) {
-//            SuratPengantar penduduk = daftarAset.get(tableController.getRowSelected());
+//            SuratPengantar penduduk = daftar.get(tableController.getRowSelected());
 //            LaporanLihatTransaksi view = new LaporanLihatTransaksi(menuController, penduduk, true);
 //            view.setLocationRelativeTo(null);
 //            view.setTitle("Histori Transaksi");
 //            view.setResizable(false);
 //            view.setVisible(true);
 //        } else {
-//            JOptionPane.showMessageDialog(this, "Data Aset belum dipilih!", getTitle(), JOptionPane.WARNING_MESSAGE);
+//            JOptionPane.showMessageDialog(this, "Data  belum dipilih!", getTitle(), JOptionPane.WARNING_MESSAGE);
 //        }
     }//GEN-LAST:event_pmnuLihatTransaksiActionPerformed
 
@@ -619,7 +619,7 @@ public class DaftarSpView extends javax.swing.JInternalFrame {
                 } catch (Exception e) {
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Data Aset belum dipilih!", getTitle(), JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Data belum dipilih!", getTitle(), JOptionPane.WARNING_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnHapusActionPerformed
