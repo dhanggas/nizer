@@ -7,7 +7,7 @@ package aplikasi.view;
 
 /**
  *
- * @author soraya
+ * @author niser
  */
 public class TentangAplikasi extends javax.swing.JInternalFrame {
 

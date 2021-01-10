@@ -19,7 +19,7 @@ import javax.sql.DataSource;
 
 /**
  *
- * @author dhang
+ * @author niser
  */
 public class ServiceSkm implements RepoSkm{
         private DataSource ds;

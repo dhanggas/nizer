@@ -18,7 +18,7 @@ import aplikasi.repository.RepoPenduduk;
 
 /**
  *
- * @author dhiskar
+ * @author niser
  */
 public class ServicePenduduk implements RepoPenduduk {
 

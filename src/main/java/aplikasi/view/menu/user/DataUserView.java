@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author dhiskar
+ * @author niser
  */
 public class DataUserView extends javax.swing.JDialog {
 

@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author dhiskar
+ * @author niser
  */
 public interface BaseRepository <T, E>{
     public T save(T value) throws SQLException;

@@ -26,7 +26,7 @@ import aplikasi.service.ServiceSkm;
 
 /**
  *
- * @author soraya
+ * @author niser
  */
 public class DataSkmView extends javax.swing.JDialog {
 
@@ -136,7 +136,7 @@ public class DataSkmView extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Data KTP");
+        setTitle("Data SKM");
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/gambar/logo3.png")).getImage());
 
         jToolBar1.setRollover(true);
@@ -411,7 +411,7 @@ public class DataSkmView extends javax.swing.JDialog {
                     daftarSkmController.refreshDataTablesByName();
                 }
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(this, "Tidak dapat merubah data barang", getTitle(), JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Tidak dapat merubah data !", getTitle(), JOptionPane.ERROR_MESSAGE);
                 Logger.getLogger(DataSkmView.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
@@ -424,7 +424,7 @@ public class DataSkmView extends javax.swing.JDialog {
                 }
                 this.dispose();
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(this, "Tidak dapat menyimpan data barang baru", getTitle(), JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Tidak dapat menyimpan data baru !", getTitle(), JOptionPane.ERROR_MESSAGE);
                 Logger.getLogger(DataSkmView.class.getName()).log(Level.SEVERE, null, ex);
             }
         }

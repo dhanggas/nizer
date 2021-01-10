@@ -15,7 +15,6 @@ import aplikasi.service.ServiceSp;
 import aplikasi.view.MainMenuView;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -32,7 +31,7 @@ import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
- * @author laptop
+ * @author niser
  */
 public final class LaporanSuratPengantar extends javax.swing.JInternalFrame {
 

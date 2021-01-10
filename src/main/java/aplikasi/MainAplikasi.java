@@ -14,7 +14,7 @@ import javax.swing.SwingUtilities;
 
 /**
  *
- * @author dhiskar
+ * @author niser
  */
 public class MainAplikasi {
 

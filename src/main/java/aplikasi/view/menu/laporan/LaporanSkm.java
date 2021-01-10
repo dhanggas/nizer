@@ -32,7 +32,7 @@ import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
- * @author laptop
+ * @author niser
  */
 public final class LaporanSkm extends javax.swing.JInternalFrame {
 

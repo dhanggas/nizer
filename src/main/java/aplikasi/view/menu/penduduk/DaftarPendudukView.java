@@ -25,7 +25,7 @@ import aplikasi.repository.RepoPenduduk;
 
 /**
  *
- * @author dhiskar
+ * @author niser
  */
 public class DaftarPendudukView extends javax.swing.JInternalFrame {
 

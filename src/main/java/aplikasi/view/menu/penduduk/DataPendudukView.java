@@ -14,8 +14,6 @@ import aplikasi.entity.Users;
 import java.awt.event.KeyEvent;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -24,7 +22,7 @@ import aplikasi.service.ServicePenduduk;
 
 /**
  *
- * @author soraya
+ * @author niser
  */
 public class DataPendudukView extends javax.swing.JDialog {
 

@@ -83,7 +83,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="mnuPengantar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Surat Pengantar"/>
+            <Property name="text" type="java.lang.String" value="Transaksi"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="mniSuratPengantar">

@@ -7,7 +7,7 @@ package aplikasi.config;
 
 /**
  *
- * @author soraya
+ * @author niser
  */
 public class FieldMinimal {
 

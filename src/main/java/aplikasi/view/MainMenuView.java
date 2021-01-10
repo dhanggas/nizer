@@ -19,10 +19,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JInternalFrame;
 
-/**
- *
- * @author dhiskar
- */
 public class MainMenuView extends javax.swing.JFrame {
 
     private Users p = null;
@@ -291,7 +287,7 @@ public class MainMenuView extends javax.swing.JFrame {
 
         jMenuBar1.add(mnuMasterData);
 
-        mnuPengantar.setText("Surat Pengantar");
+        mnuPengantar.setText("Transaksi");
 
         mniSuratPengantar.setForeground(new java.awt.Color(0, 110, 4));
         mniSuratPengantar.setText("Surat Pengantar (KTP / KK / Pindah)");

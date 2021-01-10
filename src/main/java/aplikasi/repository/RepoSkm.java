@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * @author dhiskar
+ * @author niser
  */
 public interface RepoSkm extends BaseRepository<SuratKematian , String> {
 

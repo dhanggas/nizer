@@ -31,10 +31,6 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.view.JasperViewer;
 import aplikasi.repository.RepoSp;
 
-/**
- *
- * @author dhiskar
- */
 public class DaftarSpView extends javax.swing.JInternalFrame {
 
 //    private final RepoSp repoKtp = new ServiceSp(KoneksiDB.getDataSource());
@@ -569,16 +565,6 @@ public class DaftarSpView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tableViewMouseReleased
 
     private void pmnuLihatTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pmnuLihatTransaksiActionPerformed
-//        if (tableController.isSelected()) {
-//            SuratPengantar penduduk = daftar.get(tableController.getRowSelected());
-//            LaporanLihatTransaksi view = new LaporanLihatTransaksi(menuController, penduduk, true);
-//            view.setLocationRelativeTo(null);
-//            view.setTitle("Histori Transaksi");
-//            view.setResizable(false);
-//            view.setVisible(true);
-//        } else {
-//            JOptionPane.showMessageDialog(this, "Data  belum dipilih!", getTitle(), JOptionPane.WARNING_MESSAGE);
-//        }
     }//GEN-LAST:event_pmnuLihatTransaksiActionPerformed
 
     private void pmnuUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pmnuUbahActionPerformed

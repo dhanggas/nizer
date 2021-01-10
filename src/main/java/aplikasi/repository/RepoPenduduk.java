@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *
- * @author dhiskar
+ * @author niser
  */
 public interface RepoPenduduk extends BaseRepository<Penduduk, String> {
 

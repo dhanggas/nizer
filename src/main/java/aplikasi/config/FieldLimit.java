@@ -12,7 +12,7 @@ import javax.swing.text.PlainDocument;
 
 /**
  *
- * @author soraya
+ * @author niser
  */
 public class FieldLimit extends PlainDocument {
 

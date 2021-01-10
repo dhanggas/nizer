@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * @author dhiskar
+ * @author niser
  */
 public interface RepoSp extends BaseRepository<SuratPengantar, String> {
 

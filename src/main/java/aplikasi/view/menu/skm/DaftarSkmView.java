@@ -34,7 +34,7 @@ import aplikasi.repository.RepoSkm;
 
 /**
  *
- * @author dhiskar
+ * @author niser
  */
 public class DaftarSkmView extends javax.swing.JInternalFrame {
 

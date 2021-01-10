@@ -19,7 +19,7 @@ import javax.swing.table.TableRowSorter;
 
 /**
  *
- * @author dhiskar
+ * @author niser
  */
 public class TableViewController {
 

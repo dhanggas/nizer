@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author dhiskar
+ * @author niser
  */
 public class LoginView extends javax.swing.JDialog {
 

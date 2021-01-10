@@ -9,7 +9,7 @@ import java.sql.Date;
 
 /**
  *
- * @author dhang
+ * @author niser
  */
 public class SuratKematian {
     private String no_skm;

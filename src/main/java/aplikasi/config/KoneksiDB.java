@@ -10,7 +10,7 @@ import org.apache.commons.dbcp.BasicDataSource;
 
 /**
  *
- * @author dhiskar
+ * @author niser
  */
 public class KoneksiDB {
 

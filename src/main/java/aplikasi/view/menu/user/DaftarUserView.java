@@ -25,7 +25,7 @@ import javax.swing.JTable;
 
 /**
  *
- * @author dhiskar
+ * @author niser
  */
 public class DaftarUserView extends javax.swing.JInternalFrame {
 

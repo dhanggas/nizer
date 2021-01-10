@@ -28,7 +28,7 @@ import aplikasi.repository.RepoSp;
 
 /**
  *
- * @author soraya
+ * @author niser
  */
 public class DataSpView extends javax.swing.JDialog {
 

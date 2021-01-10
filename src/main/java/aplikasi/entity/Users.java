@@ -7,7 +7,7 @@ package aplikasi.entity;
 
 /**
  *
- * @author soraya
+ * @author niser
  */
 public class Users {
     public enum Role{Admin,Kepala};
