@@ -2,8 +2,8 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="NotaPenjualan" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="595f70ef-f211-4a84-a1d3-553088cf846b">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="ireport.zoom" value="1.7715610000000022"/>
-	<property name="ireport.x" value="28"/>
-	<property name="ireport.y" value="400"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="kode" class="java.lang.String"/>
 	<parameter name="tanggal" class="java.util.Date"/>
 	<parameter name="pembawa" class="java.lang.String"/>
@@ -87,6 +87,10 @@ Tangerang]]></text>
 					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</line>
+			<image>
+				<reportElement x="13" y="0" width="93" height="76" uuid="637740f3-389f-4d13-aafa-7f7fd2f55ae2"/>
+				<imageExpression><![CDATA["D:\\java\\data-desa-sarakan\\src\\main\\resources\\gambar\\Lambang_Daerah_Kabupaten_Tangerang.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>

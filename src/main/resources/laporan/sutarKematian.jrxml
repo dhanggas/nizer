@@ -3,7 +3,7 @@
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="ireport.zoom" value="2.1435888100000042"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="633"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="kode" class="java.lang.String"/>
 	<parameter name="tanggal" class="java.util.Date"/>
 	<parameter name="pembawa" class="java.lang.String"/>
@@ -90,6 +90,10 @@ Tangerang]]></text>
 					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</line>
+			<image>
+				<reportElement x="7" y="0" width="78" height="76" uuid="e3cfb87a-963a-40bf-8d53-7e87c28b0167"/>
+				<imageExpression><![CDATA["D:\\java\\data-desa-sarakan\\src\\main\\resources\\gambar\\Lambang_Daerah_Kabupaten_Tangerang.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>

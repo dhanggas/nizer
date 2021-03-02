@@ -87,6 +87,10 @@ Tangerang]]></text>
 				</textElement>
 				<text><![CDATA[Alamat : Komplek Sarakan Rt./Rw. 003/001 Jl. Raya Pakuhaji Km.2 Sepatan Tangerang.]]></text>
 			</staticText>
+			<image>
+				<reportElement x="20" y="0" width="82" height="94" uuid="37f11f7f-661d-465b-b249-dba384bb0d0a"/>
+				<imageExpression><![CDATA["D:\\java\\data-desa-sarakan\\src\\main\\resources\\gambar\\Lambang_Daerah_Kabupaten_Tangerang.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<columnHeader>
