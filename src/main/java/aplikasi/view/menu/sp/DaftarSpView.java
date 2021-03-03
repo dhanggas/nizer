@@ -30,7 +30,13 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.view.JasperViewer;
 import aplikasi.repository.RepoSp;
-
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import java.net.URI;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 public class DaftarSpView extends javax.swing.JInternalFrame {
 
 //    private final RepoSp repoKtp = new ServiceSp(KoneksiDB.getDataSource());
@@ -73,7 +79,26 @@ public class DaftarSpView extends javax.swing.JInternalFrame {
         this.ktp = ktp;
 
     }
+    public void buatQrCode(String kode) throws Exception{
+//        String data = "ada";
+//		String path = "D:\\QR-Code\\infybuzz.jpg";
+//        
+////        URI uri = getClass().getClassLoader().getResource("/gambar/infybuzz.jpg").toURI(); 
+////Path path = Paths.get(uri);
+////		String path = "//resources/gambar/infybuzz.jpg";
+//		
+//		BitMatrix matrix = new MultiFormatWriter().encode(data, BarcodeFormat.QR_CODE, 500, 500);
+//		
+//		MatrixToImageWriter.writeToPath(matrix, "jpg", Paths.get(path));
 
+String data = kode;
+		String path = "D:\\QR-Code\\qrCode.jpg";
+		
+		BitMatrix matrix = new MultiFormatWriter()
+				.encode(data, BarcodeFormat.QR_CODE, 500, 500);
+		
+		MatrixToImageWriter.writeToPath(matrix, "jpg", Paths.get(path));
+    }
     public void refreshDataTables() {
         try {
             tableController.clearData();
@@ -545,6 +570,11 @@ public class DaftarSpView extends javax.swing.JInternalFrame {
         if (tableController.isSelected()) {
             SuratPengantar ktp = daftarKtp.get(tableController.getRowSelected());
             setFields(ktp);
+            try {
+                buatQrCode(txtNoSp.getText());
+            } catch (Exception ex) {
+                Logger.getLogger(DaftarSpView.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
         }
     }//GEN-LAST:event_tableViewMouseClicked

@@ -31,6 +31,11 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.view.JasperViewer;
 import aplikasi.repository.RepoSkm;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import java.nio.file.Paths;
 
 /**
  *
@@ -550,6 +555,11 @@ public class DaftarSkmView extends javax.swing.JInternalFrame {
         if (tableController.isSelected()) {
             SuratKematian ktp = daftarSkm.get(tableController.getRowSelected());
             setFields(ktp);
+            try {
+                buatQrCode(txtNoSkm.getText());
+            } catch (Exception ex) {
+                Logger.getLogger(DaftarSkmView.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
         }
     }//GEN-LAST:event_tableViewMouseClicked
@@ -779,5 +789,26 @@ public class DaftarSkmView extends javax.swing.JInternalFrame {
     private void setBtnKelapaDisable() {
         btnVerifikasi.setEnabled(false);
         btnHapus.setEnabled(false);
+    }
+    
+        public void buatQrCode(String kode) throws Exception{
+//        String data = "ada";
+//		String path = "D:\\QR-Code\\infybuzz.jpg";
+//        
+////        URI uri = getClass().getClassLoader().getResource("/gambar/infybuzz.jpg").toURI(); 
+////Path path = Paths.get(uri);
+////		String path = "//resources/gambar/infybuzz.jpg";
+//		
+//		BitMatrix matrix = new MultiFormatWriter().encode(data, BarcodeFormat.QR_CODE, 500, 500);
+//		
+//		MatrixToImageWriter.writeToPath(matrix, "jpg", Paths.get(path));
+
+String data = kode;
+		String path = "D:\\QR-Code\\qrCode.jpg";
+		
+		BitMatrix matrix = new MultiFormatWriter()
+				.encode(data, BarcodeFormat.QR_CODE, 500, 500);
+		
+		MatrixToImageWriter.writeToPath(matrix, "jpg", Paths.get(path));
     }
 }

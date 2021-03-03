@@ -91,6 +91,10 @@ Tangerang]]></text>
 				<reportElement x="13" y="0" width="93" height="76" uuid="637740f3-389f-4d13-aafa-7f7fd2f55ae2"/>
 				<imageExpression><![CDATA["D:\\java\\data-desa-sarakan\\src\\main\\resources\\gambar\\Lambang_Daerah_Kabupaten_Tangerang.png"]]></imageExpression>
 			</image>
+			<image>
+				<reportElement x="466" y="1" width="86" height="75" uuid="96752abb-0205-4f6d-b07e-a63fc0a3c354"/>
+				<imageExpression><![CDATA["D:\\QR-Code\\qrCode.jpg"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
